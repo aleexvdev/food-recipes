@@ -1,15 +1,28 @@
-import React from 'react'
+import { TypeBlogPosts } from '../../../types/typeConstans'
+import { Link } from 'react-router-dom';
 
-export const CardBlogPost = () => {
+interface ICardBlogPost {
+  props: TypeBlogPosts;
+}
+
+export const CardBlogPost = ({ props }: ICardBlogPost) => {
+
+  const { title, description, imageUrl } = props;
+
   return (
-    <div key={post.id} className="bg-white p-4 rounded-lg shadow-md">
-      <img
-        src={post.imageUrl}
-        alt={post.title}
-        className="w-full h-48 object-cover rounded-md mb-4"
-      />
-      <h3 className="text-lg font-semibold mb-2">{post.title}</h3>
-      <p className="text-gray-600">{post.description}</p>
-    </div>
-)
+    <Link to={'/blog'} className="w-full max-w-[306px] bg-white p-4 rounded-lg shadow-md hover:bg-first/35">
+      <div className='w-full h-full'>
+        <img
+          src={imageUrl}
+          alt={title}
+          className="w-full h-48 object-cover rounded-md mb-4"
+        />
+        <h3 className="text-lg font-semibold mb-2">{title}</h3>
+        <div className='w-full flex items-center justify-between'>
+          <p className="text-gray-600">{description.slice(0, 60) + "..."}</p>
+          <Link to={'/blog'} className="text-blue-500 font-bold text-sm">Read More</Link>
+        </div>
+      </div>
+    </Link>
+  )
 }

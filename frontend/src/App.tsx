@@ -1,15 +1,13 @@
-import { motion, useAnimation } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
+import { motion } from 'framer-motion';
 import { Banner } from './components/common/Banner/Banner';
 import { Link } from 'react-router-dom';
 import { categories } from './constans/categories';
 import { CardCategory } from './components/common/Cards/CardCategory';
 import { blogPosts } from './constans/data';
+import { CardBlogPost } from './components/common/Cards/CardBlogPost';
+import { Footer } from './components/common/Footer/Footer';
 
 function App() {
-
-  const animationControl = useAnimation();
-  const [ref, inView] = useInView();
 
   return (
     <main className="h-auto">
@@ -51,7 +49,7 @@ function App() {
         </motion.div>
       </section>
       <section className='h-auto w-full flex items-center justify-center pt-20'>
-        <div ref={ref} className='flex flex-col items-center justify-center'>
+        <div className='flex flex-col items-center justify-center'>
           <motion.h1
             className="text-black text-5xl text-center font-bold leading-10 tracking-wide sm:text-3xl md:text-4xl lg:text-6xl mb-4"
             initial={{ opacity: 0, y: -50 }}
@@ -77,21 +75,14 @@ function App() {
           >
             Our Blog & Articles
           </motion.h1>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="flex items-center justify-center mx-auto max-w-7xl w-full h-full flex-wrap gap-4 mt-10">
             {blogPosts.map((post) => (
-              <div key={post.id} className="bg-white p-4 rounded-lg shadow-md">
-                <img
-                  src={post.imageUrl}
-                  alt={post.title}
-                  className="w-full h-48 object-cover rounded-md mb-4"
-                />
-                <h3 className="text-lg font-semibold mb-2">{post.title}</h3>
-                <p className="text-gray-600">{post.description}</p>
-              </div>
+              <CardBlogPost key={post.id} props={post} />
             ))}
           </div>
         </div>
       </section>
+      <Footer />
     </main>
   );
 }
