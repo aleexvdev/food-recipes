@@ -26,14 +26,14 @@ function App() {
           >
             Healthy Food Recipes
           </motion.h1>
-          <motion.p
-            className="text-sm sm:text-base md:text-lg lg:text-xl mb-8 font-medium"
+          <motion.div
+            className="text-sm sm:text-base md:text-lg lg:text-xl mb-8 font-medium p-5 mt-5 rounded-xl bg-white/50"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: 'easeOut', delay: 0.4 }}
           >
-            Discover delectable cuisine and unforgettable moments in our welcoming, culinary haven.
-          </motion.p>
+            <p>Discover delectable cuisine and unforgettable moments in our welcoming, culinary haven.</p>
+          </motion.div>
           <Link to={'/recipes'}>
             <motion.button
               className="bg-first text-white py-2 px-4 rounded-xl hover:bg-first/85 transition-colors"
