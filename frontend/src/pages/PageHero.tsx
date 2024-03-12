@@ -1,4 +1,3 @@
-import { useReducer } from 'react'
 import NavBar from '../components/common/NavBar/NavBar'
 import { FoodRecipesContext } from '../contexts/ContextRecipe'
 import { AnimatedOutlet } from '../components/AnimatedOutlet'

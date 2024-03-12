@@ -1,9 +1,10 @@
-import axios, { AxiosResponse } from 'axios';
-import { mapperRecipe } from '../lib/mappers/mapperRecipe';
-import { RecipeType } from '../types/TypeRecipes';
+// import axios, { AxiosResponse } from 'axios';
+// import { mapperRecipe } from '../lib/mappers/mapperRecipe';
+// import { RecipeType } from '../types/TypeRecipes';
 
 export const getRandomRecipes = async (url: string) => {
-  try {
+  console.log(url)
+  /* try {
     const response: AxiosResponse = await axios.get(url);
     if (response.status === 200) {
       const filterRecipes: RecipeType = {
@@ -34,5 +35,5 @@ export const getRandomRecipes = async (url: string) => {
       success: false, 
       message: `Something went wrong, ${error}` 
     }
-  }
+  } */
 }
