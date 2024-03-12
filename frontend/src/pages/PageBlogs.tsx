@@ -1,7 +1,6 @@
-import React from 'react'
 
 export const PageBlogs = () => {
   return (
-    <div>PageBlogs</div>
+    <div className='text-black pt-52 w-full text-center'>FUUUUUUUUUUUUUUUUUUUUUIIIIIIIIIIIIIIIII</div>
   )
 }

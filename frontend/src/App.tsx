@@ -63,19 +63,17 @@ function App() {
           </div>
         </div>
       </section>
-      <section className='h-auto w-full flex items-center justify-center mt-20'>
-        <div className='flex items-center justify-center'>
-          <div className='flex flex-col items-center justify-center'>
-            <motion.h1
-              className="text-black text-5xl text-center font-bold leading-10 tracking-wide sm:text-3xl md:text-4xl lg:text-7xl mb-4"
-              initial={{ opacity: 0, y: -50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
-            >
-              Blog & Articles
-            </motion.h1>
-          </div>
-          <div className='flex items-center justify-center mx-auto max-w-3xl w-full h-full mt-10'>
+      <section className='h-auto w-full flex flex-col items-center justify-center mt-20 mx-auto max-w-5xl'>
+        <div className='flex flex-col lg:flex-row items-center justify-center w-full'>
+          <motion.h1
+            className="text-black text-4xl md:text-5xl lg:text-7xl text-center font-bold leading-10 tracking-wide mb-4"
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
+          >
+            Blog & Articles
+          </motion.h1>
+          <div className='flex items-center justify-center mx-auto max-w-full w-full mt-10 px-4'>
             <CarouselComponent />
           </div>
         </div>
