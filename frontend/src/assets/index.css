@@ -21,3 +21,29 @@ body {
 .title {
   font-family: 'Arima', sans-serif;
 }
+
+.carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 56vh; /* Ajusta la altura según tus necesidades */
+}
+
+.carousel-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.carousel-button {
+  padding: 8px 16px;
+  font-size: 16px;
+  border: none;
+  background-color: #ccc;
+  color: #333;
+  cursor: pointer;
+}
+
+.carousel-button:hover {
+  background-color: #aaa;
+}

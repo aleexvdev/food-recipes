@@ -23,7 +23,7 @@ export const Banner = () => {
       <picture>
         <source />
         <img
-          src={`/public/assets/img-home/${banners[currentBanner].img}.jpg`} 
+          src={`assets/img-home/${banners[currentBanner].img}.jpg`} 
           alt={banners[currentBanner].img}
           className="w-full h-full object-cover"
         />
