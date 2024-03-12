@@ -1,4 +1,4 @@
-import { TypeFilter, TypeNavItems } from "../types/typeConstans";
+import { TypeNavItems } from "../types/typeConstans";
 
 /* export const filters: TypeFilter[] = [
   {
