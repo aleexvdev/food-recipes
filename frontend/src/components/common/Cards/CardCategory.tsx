@@ -29,7 +29,7 @@ export const CardCategory = ({ props }: ICardCategory) => {
   }
 
   return (
-    <div className='flex flex-col w-full h-full items-center justify-center rounded-lg gap-2 max-w-[306px] p-5 border border-gray-400 hover:bg-first/35 shadow-md'>
+    <div className='flex flex-col w-full h-full items-center justify-center rounded-lg gap-2 max-w-[300px] md:max-w-[200px] p-5 border border-gray-300 hover:bg-first/35 shadow-lg'>
       <div className='rounded-full bg-first p-2'>
         {
           iconCategory(props.category)

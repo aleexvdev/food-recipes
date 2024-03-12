@@ -6,33 +6,37 @@ export const blogPosts: TypeBlogPosts[] = [
     id: 1,
     title: 'The secret tips & tricks to prepare a perfect burger & pizza for our customers',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit...',
-    imageUrl: 'burger.jpg',
+    imageUrl: 'https://images.pexels.com/photos/1639562/pexels-photo-1639562.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    date: "2024-03-10"
   },
   {
     id: 2,
     title: 'The secret tips & tricks to prepare a perfect burger & pizza for our customers',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit...',
-    imageUrl: 'burger.jpg',
+    imageUrl: 'https://images.pexels.com/photos/764925/pexels-photo-764925.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    date: "2024-03-10"
   },
   {
     id: 3,
     title: 'The secret tips & tricks to prepare a perfect burger & pizza for our customers',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elit...',
-    imageUrl: 'burger.jpg',
+    imageUrl: 'https://images.pexels.com/photos/60616/fried-chicken-chicken-fried-crunchy-60616.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    date: "2024-03-10"
   },
   {
     id: 4,
     title: 'The secret tips & tricks to prepare a perfect burger & pizza for our customers',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit...',
-    imageUrl: 'burger.jpg',
+    imageUrl: 'https://images.pexels.com/photos/1352270/pexels-photo-1352270.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    date: "2024-03-10"
   },
   {
-    id: 4,
+    id: 5,
     title: 'The secret tips & tricks to prepare a perfect burger & pizza for our customers',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit...',
-    imageUrl: 'burger.jpg',
+    imageUrl: 'https://images.pexels.com/photos/262973/pexels-photo-262973.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    date: "2024-03-10"
   },
-  // Add more blog post objects here
 ];
 
 export const socialNetworks: TypeSocialNetworks[] = [
