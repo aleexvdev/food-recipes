@@ -1,3 +1,5 @@
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import { motion } from 'framer-motion';
 import { Banner } from './components/common/Banner/Banner';
 import { Link } from 'react-router-dom';
@@ -7,6 +9,11 @@ import { Footer } from './components/common/Footer/Footer';
 import { CarouselComponent } from './components/Carousel/CarouselComponent';
 
 function App() {
+
+  AOS.init({
+    offset: 300,
+    duration: 600
+  });
 
   return (
     <main className="h-auto">
@@ -46,7 +53,7 @@ function App() {
           </Link>
         </motion.div>
       </section>
-      <section className='h-auto w-full flex items-center justify-center pt-20'>
+      <section data-aos="zoom-in-up" className='h-auto w-full flex items-center justify-center pt-20'>
         <div className='flex flex-col items-center justify-center'>
           <motion.h1
             className="text-black text-5xl text-center font-bold leading-10 tracking-wide sm:text-3xl md:text-4xl lg:text-6xl mb-4"
@@ -63,7 +70,7 @@ function App() {
           </div>
         </div>
       </section>
-      <section className='h-auto w-full flex flex-col items-center justify-center mt-20 mx-auto max-w-5xl'>
+      <section data-aos="zoom-in-right" className='h-auto w-full flex flex-col items-center justify-center mt-20 mx-auto max-w-5xl'>
         <div className='flex flex-col lg:flex-row items-center justify-center w-full'>
           <motion.h1
             className="text-black text-4xl md:text-5xl lg:text-7xl text-center font-bold leading-10 tracking-wide mb-4"
