@@ -12,7 +12,7 @@ function App() {
 
   AOS.init({
     offset: 300,
-    duration: 600
+    duration: 400
   });
 
   return (
