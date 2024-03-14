@@ -9,7 +9,7 @@ export const PageRecipes = () => {
       <section className='mt-32 flex flex-col items-center justify-center w-full h-auto overflow-hidden bg-white/30'>
         <div className='text-center max-w-md px-4 sm:max-w-lg md:max-w-xl lg:max-w-2xl'>
           <motion.h1
-            className="text-black text-5xl font-bold leading-10 tracking-wide sm:text-3xl md:text-4xl lg:text-6xl mb-4"
+            className="text-black text-5xl font-bold leading-10 tracking-wide sm:text-6xl md:text-6xl lg:text-6xl mb-4"
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
@@ -17,7 +17,7 @@ export const PageRecipes = () => {
             Explore Recipes
           </motion.h1>
           <motion.div
-            className="text-sm sm:text-base md:text-lg lg:text-xl mb-8 font-medium p-5 mt-5 rounded-xl bg-white/50"
+            className="text-xl  mb-8 font-medium p-5 mt-5 rounded-xl bg-white/50"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: 'easeOut', delay: 0.4 }}
@@ -32,7 +32,7 @@ export const PageRecipes = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: 'easeOut', delay: 0.6 }}
           >
-            <Input />
+            <Input key={'search'} placeholder={'Find your favorite recipe...'} />
           </motion.div>
           <motion.div 
             className='flex items-center justify-center gap-5 w-full flex-wrap md:flex-nowrap'
