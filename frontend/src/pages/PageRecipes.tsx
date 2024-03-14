@@ -25,7 +25,7 @@ export const PageRecipes = () => {
             <p>Discover delectable cuisine and unforgettable moments in our welcoming, culinary haven.</p>
           </motion.div>
         </div>
-        <div className='mt-6 text-center max-w-md px-4 sm:max-w-lg md:max-w-xl lg:max-w-2xl'>
+        <div className='mt-6 text-center mx-auto w-full max-w-md px-4 sm:max-w-lg md:max-w-xl lg:max-w-2xl'>
           <motion.div 
             className='w-full mb-10'
             initial={{ opacity: 0, y: 50 }}
@@ -35,14 +35,14 @@ export const PageRecipes = () => {
             <Input />
           </motion.div>
           <motion.div 
-            className='flex items-center justify-center gap-5 w-full'
+            className='flex items-center justify-center gap-5 w-full flex-wrap md:flex-nowrap'
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: 'easeOut', delay: 0.8 }}
           >
             {
               categories.map(({ id, category }) => (
-                <Button key={id} text={category} className={'rounded-2xl border px-5 py-1 font-medium min-w-32'} />
+                <Button key={id} text={category} className={'rounded-2xl border px-5 py-1 font-medium w-auto md:min-w-32'} />
               ))
             }
           </motion.div>
