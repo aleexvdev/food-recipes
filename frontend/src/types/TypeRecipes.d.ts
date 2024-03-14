@@ -1,3 +1,4 @@
+
 export type TypeInitialFoodRecipes = {
 	error: boolean,
 	loading: boolean,
