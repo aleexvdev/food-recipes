@@ -1,5 +1,4 @@
 export const mapperRecipe = (objectRecipe: any) => ({
-	id: objectRecipe.uri.slice(objectRecipe.uri.indexOf('recipe')),
 	calories: objectRecipe.calories,
 	cuisineType: objectRecipe.cuisineType,
 	dishType: objectRecipe.dishType,
@@ -20,5 +19,21 @@ export const mapperRecipe = (objectRecipe: any) => ({
 	),
 	totalTime: objectRecipe.totalTime,
 	url: objectRecipe.url,
-	yield: objectRecipe.yield
+	yield: objectRecipe.yield,
+	fats: {
+		label: objectRecipe.digest.find((item: any) => item.label === 'Fat').label,
+		unit: objectRecipe.digest.find((item: any) => item.label === 'Fat').unit,
+		total: objectRecipe.digest.find((item: any) => item.label === 'Fat').total
+	},
+	carbs: {
+		label: objectRecipe.digest.find((item: any) => item.label === 'Carbs').label,
+		unit: objectRecipe.digest.find((item: any) => item.label === 'Carbs').unit,
+		total: objectRecipe.digest.find((item: any) => item.label === 'Carbs').total
+	},
+	protein: {
+		label: objectRecipe.digest.find((item: any) => item.label === 'Protein').label,
+		unit: objectRecipe.digest.find((item: any) => item.label === 'Protein').unit,
+		total: objectRecipe.digest.find((item: any) => item.label === 'Protein').total
+	},
+	tags: objectRecipe.tags
 });

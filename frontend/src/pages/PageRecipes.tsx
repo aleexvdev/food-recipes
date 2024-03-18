@@ -2,8 +2,36 @@ import { motion } from 'framer-motion';
 import { categories } from '../constans/categories';
 import { Button } from '../components/common/Buttons/Button';
 import { Input } from '../components/common/Input/Input';
+import { useFoodRecipeContext } from '../contexts/ContextRecipe';
+import { useEffect } from 'react';
+import { fetchRecipes } from '../service/api';
+import { RecipeComponent } from '../components/Recipes/RecipeComponent';
 
 export const PageRecipes = () => {
+
+  const { foodRecipes, dispatchRecipes } = useFoodRecipeContext();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      dispatchRecipes({
+        type: 'RECIPE_SEARCHING'
+      });
+      try {
+        const response = await fetchRecipes('ceviche');
+        dispatchRecipes({
+          type: 'RECIPE_FOUND',
+          payload: response.recipe
+        })
+      } catch (error) {
+        dispatchRecipes({
+          type: 'RECIPE_ERROR',
+          payload: 'error.message'
+        })
+      }
+    }
+    fetchData();
+  }, []);
+
   return (
     <main className='h-auto'>
       <section className='mt-32 flex flex-col items-center justify-center w-full h-auto overflow-hidden bg-white/30'>
@@ -47,6 +75,9 @@ export const PageRecipes = () => {
             }
           </motion.div>
         </div>
+      </section>
+      <section className='h-auto w-full flex items-center justify-center mt-20 mx-auto max-w-6xl mb-10'>
+        <RecipeComponent foodRecipes={foodRecipes.recipes} />
       </section>
     </main>
   );

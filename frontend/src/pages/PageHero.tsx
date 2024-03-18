@@ -1,18 +1,20 @@
-import NavBar from '../components/common/NavBar/NavBar'
+import { useReducer } from 'react'
+import { INITIAL_FOOD_RECIPES, recipeReducer } from '../reducers/recipesReducer'
 import { FoodRecipesContext } from '../contexts/ContextRecipe'
-import { AnimatedOutlet } from '../components/AnimatedOutlet'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useLocation } from 'react-router'
+import { AnimatedOutlet } from '../components/AnimatedOutlet'
+import NavBar from '../components/common/NavBar/NavBar'
 
 export const PageHero = () => {
 
-  // const [foodRecipes, dispatchRecipes] = useReducer({});
+  const [foodRecipes, dispatchRecipes] = useReducer(recipeReducer, INITIAL_FOOD_RECIPES);
 	const location = useLocation();
 
   return (
     <div className='relative'>
       <NavBar />
-      <FoodRecipesContext.Provider value={{  }}>
+      <FoodRecipesContext.Provider value={{ foodRecipes, dispatchRecipes }}>
         <AnimatePresence mode='popLayout'>
 					<motion.div
 						key={location.pathname}
