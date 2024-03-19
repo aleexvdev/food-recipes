@@ -1,13 +1,13 @@
 import axios from 'axios';
-import { TypeRecipe } from '../types/TypeRecipes';
+import { TypeRecipe, TypeValuesForm } from '../types/TypeRecipes';
 import { mapperRecipe } from '../lib/mappers/MapperRecipe';
 
 const API_URL = 'https://api.edamam.com/api/recipes/v2';
 
-export const fetchRecipes = async (search: string) => {
-
-	try {
-    const response = await axios.get(`${API_URL}?type=public&q=${search}&random=false&app_key=${import.meta.env.VITE_APP_KEY}&app_id=${import.meta.env.VITE_APP_ID}&cuisineType=American&beta=false`);
+export const fetchRecipes = async (formData: TypeValuesForm) => {
+  try {
+    const { query, filters } = formData;
+    const response = await axios.get(`${API_URL}?type=public&q=${query}&random=false&app_key=${import.meta.env.VITE_APP_KEY}&app_id=${import.meta.env.VITE_APP_ID}&cuisineType=American&beta=false`);
 		if (response.status === 200) {
 			const filterRecipe: TypeRecipe = {
 				count: response.data.count,

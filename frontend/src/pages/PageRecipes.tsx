@@ -31,10 +31,10 @@ export const PageRecipes = () => {
       loadFoodRecipes(dispatchRecipes);
     }
     fetchData();
-  }, []);
+  }, [formValues]);
 
   const loadFoodRecipes = async (dispatchRecipes: Dispatch<RecipeReducerAction>) => {
-    const response = await fetchRecipes('lomo saltado');
+    const response = await fetchRecipes(formValues);
     try {
       dispatchRecipes({
         type: 'RECIPE_FOUND',
@@ -94,7 +94,7 @@ export const PageRecipes = () => {
       </section>
       <section className='h-auto w-full flex flex-col items-center justify-center pt-20 mx-auto max-w-6xl mb-10 transition-opacity'>
         <div className='text-center max-w-md px-4 sm:max-w-xl md:max-w-5xl lg:max-w-7xl'>
-          {/* <RecipeComponent foodRecipes={foodRecipes.recipes} /> */}
+          <RecipeComponent foodRecipes={foodRecipes.recipes} />
           <div className='py-10 w-full flex items-center justify-between px-1'>
             {
               !foodRecipes.loading && foodRecipes?.recipes?.next ? (

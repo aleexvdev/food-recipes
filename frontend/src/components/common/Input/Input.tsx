@@ -17,7 +17,12 @@ export const Input = ({ placeholder, value, onChangeInput }: IInput) => {
         value={value}
         onChange={onChangeInput}
       />
-      <MdSearch className="bg-white w-12 h-full rounded-r-xl p-1" />
+      <button
+        type="submit"
+        className="bg-transparent w-12 h-full"
+      >
+        <MdSearch className="bg-white w-12 h-full rounded-r-xl p-1" />
+      </button>
     </div>
   );
 }

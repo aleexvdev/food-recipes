@@ -2,7 +2,7 @@ import { useRecipeForm } from '../../../hooks/UseForm';
 import { motion } from 'framer-motion';
 import { Input } from '../Input/Input';
 import { FilterRecipes } from '../../Filters/FilterRecipes';
-import { TypeFilters, TypeValuesForm } from '../../../types/TypeRecipes';
+import { TypeValuesForm } from '../../../types/TypeRecipes';
 
 interface IFormRecipe {
   onSubmitForm: (formData: TypeValuesForm) => void;

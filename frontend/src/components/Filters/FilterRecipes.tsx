@@ -72,13 +72,27 @@ export const FilterRecipes = ({ getFilters }: IFilterRecipes) => {
 
   const handleAply = () => {
     getFilters(filters);
+    setShowFilter(false);
+  }
+
+  const handleReset = () => {
+    setShowFilter(false);
+    setFilters({
+      calories: {
+        from: 0,
+        to: 0,
+      },
+      ingredients: 0,
+      fields: []
+    });
   }
 
   return (
     <div className='pt-1 w-full h-auto'>
       <button 
-        className='bg-first w-full rounded-lg py-2 flex items-center justify-center gap-3'
+        className='bg-first hover:bg-first/85 w-full rounded-lg py-2 flex items-center justify-center gap-3'
         onClick={handleShowFilter}
+        type='button'
       >
         <span className='text-white text-lg'>Filter your search by...</span>
         <motion.div
@@ -169,10 +183,18 @@ export const FilterRecipes = ({ getFilters }: IFilterRecipes) => {
                   </div>
                 </div>
               </motion.div>
-              <div className='mt-2'>
+              <div className='mt-4 flex w-full items-center justify-end gap-3'>
                 <button 
-                  className='w-full h-12 bg-first text-white rounded-lg py-2 flex items-center justify-center gap-3'
+                  className='w-24 h-10 bg-slate-500/80 hover:bg-slate-500/75 text-white rounded-lg py-2 flex items-center justify-center gap-3'
+                  onClick={handleReset}
+                  type='submit'
+                >
+                  <span className='text-white text-lg'>Reset</span>
+                </button>
+                <button 
+                  className='w-24 h-10 bg-first hover:bg-first/85 text-white rounded-lg py-2 flex items-center justify-center gap-3'
                   onClick={handleAply}
+                  type='submit'
                 >
                   <span className='text-white text-lg'>Apply</span>
                 </button>
