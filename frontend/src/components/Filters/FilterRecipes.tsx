@@ -1,15 +1,77 @@
-import { useState } from 'react'
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaCaretDown } from 'react-icons/fa'
-import { CheckBox } from '../common/Checks/CheckBox'
-import { categories, diets } from '../../constans/categories'
+import { FaCaretDown } from 'react-icons/fa';
+import { CheckBox } from '../common/Checks/CheckBox';
+import { categories, diets } from '../../constans/categories';
+import { TypeFilters } from '../../types/TypeRecipes';
 
-export const FilterRecipes = () => {
+interface IFilterRecipes {
+  getFilters: (data: TypeFilters) => void;
+}
+
+export const FilterRecipes = ({ getFilters }: IFilterRecipes) => {
 
   const [showFilter, setShowFilter] = useState<boolean>(false);
+  const [filters, setFilters] = useState<TypeFilters>({
+    calories: {
+      from: 0,
+      to: 0,
+    },
+    ingredients: 0,
+    fields: []
+  });
 
   const handleShowFilter = () => {
     setShowFilter(!showFilter);
+  }
+
+  const handleFilterCheckbox = (evt: React.ChangeEvent<HTMLInputElement>) => {
+    const { checked, dataset } = evt.target
+    const name = dataset.name?.toString();
+    if (name) {
+      setFilters((prevFilters) => {
+        if (checked) {
+          return { ...prevFilters, fields: [...prevFilters.fields, name] };
+        } else {
+          return {
+            ...prevFilters,
+            fields: prevFilters.fields.filter((filter) => filter !== name),
+          };
+        }
+      });
+    }
+  };
+
+  const handleFilterCalories = (evt: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = evt.target;
+    const parsedValue = parseInt(value, 10);
+  
+    if (name === 'from') {
+      setFilters((prevState) => ({
+        ...prevState,
+        calories: {
+          ...prevState.calories,
+          from: parsedValue,
+        },
+      }));
+    } else if (name === 'to') {
+      setFilters((prevState) => ({
+        ...prevState,
+        calories: {
+          ...prevState.calories,
+          to: parsedValue,
+        },
+      }));
+    } else if (name === 'ingredients') {
+      setFilters((prevState) => ({
+        ...prevState,
+        ingredients: parsedValue,
+      }));
+    }
+  };
+
+  const handleAply = () => {
+    getFilters(filters);
   }
 
   return (
@@ -54,7 +116,9 @@ export const FilterRecipes = () => {
                         type="number"
                         name="from"
                         id="from"
+                        value={filters.calories.from}
                         className="w-full md:w-1/2 h-10 px-3 py-2 text-black border border-gray-300 rounded-md focus:outline-none"
+                        onChange={handleFilterCalories}
                       />
                     </label>
                     <label htmlFor="to" className='flex items-center text-left gap-2 mt-3'>
@@ -63,7 +127,9 @@ export const FilterRecipes = () => {
                         type="number"
                         name="to"
                         id="to"
+                        value={filters.calories.to}
                         className="w-full md:w-1/2 h-10 px-3 py-2 text-black border border-gray-300 rounded-md focus:outline-none"
+                        onChange={handleFilterCalories}
                       />
                     </label>
                   </div>
@@ -75,7 +141,9 @@ export const FilterRecipes = () => {
                         type="number"
                         name="ingredients"
                         id="ingredients"
+                        value={filters.ingredients}
                         className="w-full md:w-1/2 h-10 px-3 py-2 text-black border border-gray-300 rounded-md focus:outline-none"
+                        onChange={handleFilterCalories}
                       />
                     </label>
                   </div>
@@ -85,7 +153,7 @@ export const FilterRecipes = () => {
                   <div className='w-full grid grid-cols-2 md:grid-cols-1'>
                   {
                     categories.map(({ id, category }) => (
-                      <CheckBox key={id} text={category} />
+                      <CheckBox key={id} text={category} handleChangeCheckbox={handleFilterCheckbox} />
                     ))
                   }
                   </div>
@@ -95,12 +163,20 @@ export const FilterRecipes = () => {
                   <div className='w-full grid grid-cols-2 md:grid-cols-1'>
                   {
                     diets.map(({ id, diet }) => (
-                      <CheckBox key={id} text={diet} />
+                      <CheckBox key={id} text={diet} handleChangeCheckbox={handleFilterCheckbox} />
                     ))
                   }
                   </div>
                 </div>
               </motion.div>
+              <div className='mt-2'>
+                <button 
+                  className='w-full h-12 bg-first text-white rounded-lg py-2 flex items-center justify-center gap-3'
+                  onClick={handleAply}
+                >
+                  <span className='text-white text-lg'>Apply</span>
+                </button>
+              </div>
             </motion.div>
           )
         }

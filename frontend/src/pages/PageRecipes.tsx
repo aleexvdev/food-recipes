@@ -1,17 +1,27 @@
-import { motion } from 'framer-motion';
-import { Input } from '../components/common/Input/Input';
+import { Dispatch, useEffect, useState } from 'react';
 import { useFoodRecipeContext } from '../contexts/ContextRecipe';
-import { Dispatch, useEffect } from 'react';
 import { fetchRecipes, fetchRecipesNext } from '../service/api';
+import { motion } from 'framer-motion';
+import { GrLinkNext } from 'react-icons/gr';
+import { RecipeReducerAction, TypeValuesForm } from '../types/TypeRecipes';
+import { FormRecipe } from '../components/common/Form/FormRecipe';
 import { RecipeComponent } from '../components/Recipes/RecipeComponent';
 import { Footer } from '../components/common/Footer/Footer';
-import { GrLinkNext } from 'react-icons/gr';
-import { FilterRecipes } from '../components/Filters/FilterRecipes';
-import { RecipeReducerAction } from '../types/TypeRecipes';
 
 export const PageRecipes = () => {
 
   const { foodRecipes, dispatchRecipes } = useFoodRecipeContext();
+  const [formValues, setFormValues] = useState<TypeValuesForm>({
+    query: 'ceviche',
+    filters: {
+      calories: {
+        from: 0,
+        to: 0
+      },
+      ingredients: 0,
+      fields: []
+    }
+  });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,7 +34,7 @@ export const PageRecipes = () => {
   }, []);
 
   const loadFoodRecipes = async (dispatchRecipes: Dispatch<RecipeReducerAction>) => {
-    const response = await fetchRecipes('ceviche');
+    const response = await fetchRecipes('lomo saltado');
     try {
       dispatchRecipes({
         type: 'RECIPE_FOUND',
@@ -53,6 +63,10 @@ export const PageRecipes = () => {
     }
   };
 
+  const handleFormSubmit = (formData: TypeValuesForm) => {
+    setFormValues(formData);
+  };
+
   return (
     <main className='h-auto'>
       <section className='mt-32 flex flex-col items-center justify-center w-full h-auto overflow-hidden bg-white/30'>
@@ -75,27 +89,12 @@ export const PageRecipes = () => {
           </motion.div>
         </div>
         <div className='mt-6 text-center mx-auto w-full max-w-md px-4 sm:max-w-lg md:max-w-xl lg:max-w-2xl'>
-          <motion.div 
-            className='w-full mb-10'
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.6 }}
-          >
-            <Input key={'search'} placeholder={'Find your favorite recipe...'} />
-          </motion.div>
-          <motion.div 
-            className='flex items-center justify-center w-full h-full'
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: 'easeOut', delay: 1.0 }}
-          >
-            <FilterRecipes />
-          </motion.div>
+          <FormRecipe onSubmitForm={handleFormSubmit} />
         </div>
       </section>
       <section className='h-auto w-full flex flex-col items-center justify-center pt-20 mx-auto max-w-6xl mb-10 transition-opacity'>
         <div className='text-center max-w-md px-4 sm:max-w-xl md:max-w-5xl lg:max-w-7xl'>
-          <RecipeComponent foodRecipes={foodRecipes.recipes} />
+          {/* <RecipeComponent foodRecipes={foodRecipes.recipes} /> */}
           <div className='py-10 w-full flex items-center justify-between px-1'>
             {
               !foodRecipes.loading && foodRecipes?.recipes?.next ? (

@@ -79,3 +79,17 @@ export type TypeFoodRecipesCtx = {
 	foodRecipes: TypeRecipeReducer;
 	dispatchRecipes: React.Dispatch<RecipeReducerAction>;
 }
+
+export type TypeValuesForm = {
+  query: string;
+  filters: TypeFilters;
+}
+
+export type TypeFilters = {
+  calories: {
+    from: number;
+    to: number;
+  };
+  ingredients: number;
+  fields: string[];
+}
