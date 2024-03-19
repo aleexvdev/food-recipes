@@ -1,12 +1,13 @@
 import { motion } from 'framer-motion';
 import { Input } from '../components/common/Input/Input';
 import { useFoodRecipeContext } from '../contexts/ContextRecipe';
-import { useEffect } from 'react';
-import { fetchRecipes } from '../service/api';
+import { Dispatch, useEffect } from 'react';
+import { fetchRecipes, fetchRecipesNext } from '../service/api';
 import { RecipeComponent } from '../components/Recipes/RecipeComponent';
 import { Footer } from '../components/common/Footer/Footer';
 import { GrLinkNext } from 'react-icons/gr';
 import { FilterRecipes } from '../components/Filters/FilterRecipes';
+import { RecipeReducerAction } from '../types/TypeRecipes';
 
 export const PageRecipes = () => {
 
@@ -17,21 +18,40 @@ export const PageRecipes = () => {
       dispatchRecipes({
         type: 'RECIPE_SEARCHING'
       });
-      try {
-        const response = await fetchRecipes('ceviche');
-        dispatchRecipes({
-          type: 'RECIPE_FOUND',
-          payload: response.recipe
-        })
-      } catch (error) {
-        dispatchRecipes({
-          type: 'RECIPE_ERROR',
-          payload: 'error.message'
-        })
-      }
+      loadFoodRecipes(dispatchRecipes);
     }
     fetchData();
   }, []);
+
+  const loadFoodRecipes = async (dispatchRecipes: Dispatch<RecipeReducerAction>) => {
+    const response = await fetchRecipes('ceviche');
+    try {
+      dispatchRecipes({
+        type: 'RECIPE_FOUND',
+        payload: response.recipe
+      })
+    } catch (error) {
+      dispatchRecipes({
+        type: 'RECIPE_ERROR',
+        payload: response.message
+      })
+    }
+  };
+
+  const nextPageFoodRecipe = async (dispatchRecipes: Dispatch<RecipeReducerAction>, url?: string) => {
+    const response = await fetchRecipesNext(url || 'https');
+    try {
+      dispatchRecipes({
+        type: 'RECIPE_FOUND',
+        payload: response.recipe
+      })
+    } catch (error) {
+      dispatchRecipes({
+        type: 'RECIPE_ERROR',
+        payload: response.message
+      })
+    }
+  };
 
   return (
     <main className='h-auto'>
@@ -89,6 +109,7 @@ export const PageRecipes = () => {
                       setTimeout(() => {
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                       }, 1000);
+                      nextPageFoodRecipe(dispatchRecipes, foodRecipes?.recipes?.next)
                     }}
                   >
                     <span className='font-medium text-white text-lg'>Next</span>
@@ -106,3 +127,5 @@ export const PageRecipes = () => {
     </main>
   );
 }
+
+

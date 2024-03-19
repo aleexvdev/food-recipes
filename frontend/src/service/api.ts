@@ -33,3 +33,33 @@ export const fetchRecipes = async (search: string) => {
 		}
   }
 }
+
+export const fetchRecipesNext = async (url: string) => {
+
+	try {
+    const response = await axios.get(url);
+		if (response.status === 200) {
+			const filterRecipe: TypeRecipe = {
+				count: response.data.count,
+        from: response.data.from,
+        to: response.data.to,
+        next: response.data['_links'].next?.href,
+				recipe: response.data.hits.map((item: any) => mapperRecipe(item.recipe))
+			}
+			return {
+				success: true,
+        message: response.statusText,
+        recipe: filterRecipe
+      }
+		}
+		return {
+      success: false,
+      message: response.statusText
+    }
+  } catch (error) {
+		return {
+			success: false,
+      message: 'Error fetching recipes:', error
+		}
+  }
+}
