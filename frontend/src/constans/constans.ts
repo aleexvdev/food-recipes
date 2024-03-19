@@ -21,4 +21,13 @@ export const banners: TypeBanner[] = [
     id: 5,
     img: "Teatime"
   }
+];
+
+export const foods: string[] = [
+  "Ceviche",
+  "Lomo Saltado",
+  "Picarones",
+  "Arroz Chaufa",
+  "Tallarines Rojos",
+  "Tallarines Verdes"
 ]
