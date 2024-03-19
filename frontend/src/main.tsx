@@ -10,7 +10,7 @@ import './assets/index.css'
 
 const routerConfig = [
   {
-    path: '/',
+    path: '/*',
     element: <PageHero />,
     errorElement: <PageError />,
     children: [

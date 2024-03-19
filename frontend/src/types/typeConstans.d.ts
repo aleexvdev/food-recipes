@@ -18,6 +18,16 @@ export type TypeCategories = {
   category: string;
 }
 
+export type TypeDiets = {
+  id: number;
+  diet: string;
+}
+
+export type TypeDishes = {
+  id: number;
+  dish: string;
+}
+
 export type TypeBlogPosts = {
   id: number;
   title: string;

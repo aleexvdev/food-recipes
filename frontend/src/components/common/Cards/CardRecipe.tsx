@@ -10,35 +10,35 @@ interface ICardRecipe {
 
 export const CardRecipe = ({ recipe }: ICardRecipe) => {
   return (
-    <div className="w-full h-[280px] rounded-3xl shadow-lg bg-gradient-to-b from-main from-40% to-first">
-      <div className="flex flex-col items-start justify-start w-full h-full px-4">
-        <div className="relative w-full h-40">
+    <div className="w-full rounded-3xl shadow-lg bg-gradient-to-b from-main from-40% to-first">
+      <div className="flex flex-col items-start justify-start w-full h-full px-4 py-4 sm:py-0">
+        <div className="relative w-full h-40 sm:h-52">
           <img src={recipe.images.regular?.url} alt={recipe.label} className="h-full w-full rounded-2xl object-cover" />
           <button className="absolute top-2 right-2 bg-white rounded-full p-2 shadow-xl hover:bg-white/85">
             <IoHeart className="text-first w-6 h-6" />
           </button>
         </div>
-        <div className="pt-5 text-left h-16 w-full">
-          <h3 className="text-md font-semibold mb-1">{recipe.label.length > 50 ? recipe.label.slice(0, 50) + "..." : recipe.label}</h3>
+        <div className="pt-5 text-left w-full h-20">
+          <h3 className="text-xl font-semibold mb-1 md:text-lg">{recipe.label.length > 40 ? recipe.label.slice(0, 40) + "..." : recipe.label}</h3>
         </div>
-        <div className="w-full mt-3 flex items-center justify-between h-10">
-          <div className="text-left w-[80%] h-full flex items-center">
-            <div className="flex items-center w-full h-full">
+        <div className="w-full mt-3 flex items-start justify-between h-10 pb-2 md:pb-4">
+          <div className="text-left w-[80%] flex items-center justify-start h-full">
+            <div className="flex items-center mr-4 md:mr-6 lg:mr-2">
               <MdWatchLater className="w-5 h-5" />
-              <span className="text-gray-900 text-sm ml-1">{recipe.totalTime} Min.</span>
+              <span className="text-gray-900 text-md md:text-sm ml-2 md:ml-1">{recipe.totalTime} Min.</span>
             </div>
-            <div className="flex items-center w-full h-full">
+            <div className="flex items-center">
               <PiForkKnifeFill className="w-5 h-5" />
-              <span className="text-gray-900 text-sm ml-1">{recipe.mealType[0]}</span>
+              <span className="text-gray-900 text-md md:text-sm ml-2 md:ml-1">{recipe.mealType[0]}</span>
             </div>
           </div>
-          <div className="text-left w-[20%] flex items-center justify-center">
-            <button className="w-full h-full flex justify-end">
+          <div className="text-right w-[20%] h-full flex items-center justify-center">
+            <button className="w-full h-full flex items-center justify-end">
               <IoMdExpand className="w-6 h-6" />
             </button>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }

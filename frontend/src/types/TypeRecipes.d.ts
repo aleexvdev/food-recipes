@@ -45,16 +45,16 @@ export type TypeRecipeDetails = {
 }
 
 export type TypeInitialFoodRecipes = {
-	error: boolean | string,
-	loading: boolean,
-	recipes: TypeRecipe | undefined
+	error: boolean | string;
+	loading: boolean;
+	recipes?: TypeRecipe;
 }
 
 export type RecipeReducerAction = 
   | RecipeSearchingAction
 	| RecipeFoundAction
 	| RecipeErrorAction;
-	
+
 interface RecipeSearchingAction {
 	type: 'RECIPE_SEARCHING';
 }
@@ -72,7 +72,7 @@ interface RecipeErrorAction {
 export type TypeRecipeReducer = {
 	error: string | boolean;
 	loading: boolean;
-	recipes: TypeRecipe;
+	recipes?: TypeRecipe;
 }
 
 export type TypeFoodRecipesCtx = {

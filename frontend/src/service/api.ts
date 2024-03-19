@@ -6,10 +6,8 @@ const API_URL = 'https://api.edamam.com/api/recipes/v2';
 
 export const fetchRecipes = async (search: string) => {
 
-	const appId = '36e9f9c6';
-  const appKey = '70ac2415662bab240cd5e51a585507c4';
 	try {
-    const response = await axios.get(`${API_URL}?type=public&q=${search}&random=true&app_key=${appKey}&app_id=${appId}&cuisineType=American&beta=false`);
+    const response = await axios.get(`${API_URL}?type=public&q=${search}&random=false&app_key=${import.meta.env.VITE_APP_KEY}&app_id=${import.meta.env.VITE_APP_ID}&cuisineType=American&beta=false`);
 		if (response.status === 200) {
 			const filterRecipe: TypeRecipe = {
 				count: response.data.count,
@@ -18,7 +16,6 @@ export const fetchRecipes = async (search: string) => {
         next: response.data['_links'].next?.href,
 				recipe: response.data.hits.map((item: any) => mapperRecipe(item.recipe))
 			}
-			console.log(filterRecipe)
 			return {
 				success: true,
         message: response.statusText,

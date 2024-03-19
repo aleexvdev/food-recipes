@@ -20,13 +20,13 @@ function App() {
       <section className="relative flex items-center justify-center w-full h-screen overflow-hidden bg-white/30">
         <Banner />
         <motion.div
-          className="text-center max-w-md px-4 sm:max-w-lg md:max-w-xl lg:max-w-2xl"
+          className="text-center flex flex-col items-center justify-center max-w-md px-4 sm:max-w-lg md:max-w-xl lg:max-w-2xl"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
           <motion.h1
-            className="text-black text-5xl font-bold leading-10 tracking-wide sm:text-3xl md:text-4xl lg:text-6xl mb-4"
+            className="text-black text-6xl font-bold tracking-wide sm:text-3xl md:text-7xl mb-4"
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
@@ -34,7 +34,7 @@ function App() {
             Healthy Food Recipes
           </motion.h1>
           <motion.div
-            className="text-sm sm:text-base md:text-lg lg:text-xl mb-8 font-medium p-5 mt-5 rounded-xl bg-white/50"
+            className="text-xl sm:text-base md:text-2xl mb-8 font-medium p-5 mt-5 rounded-xl bg-white/50"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: 'easeOut', delay: 0.4 }}
@@ -43,7 +43,7 @@ function App() {
           </motion.div>
           <Link to={'/recipes'}>
             <motion.button
-              className="bg-first text-white py-2 px-4 rounded-xl hover:bg-first/85 transition-colors"
+              className="bg-first text-white py-2 px-5 rounded-xl hover:bg-first/85 transition-colors text-2xl md:text-3xl"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: 'easeOut', delay: 0.6 }}
