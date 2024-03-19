@@ -17,11 +17,12 @@ export const Banner = () => {
       <AnimatePresence initial={false}>
         <motion.div
           key={banners[currentBanner].img}
-          className="w-full h-full absolute inset-0"
+          className="w-full h-full absolute inset-0 scale-125 select-none banner-bg"
           initial={{ opacity: 0, scale: 1.2 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.8 }}
           transition={{ duration: 0.8, ease: 'easeInOut' }}
+          //slider-bg // img-cover
         >
           <picture>
             <source src={`assets/img-home/${banners[currentBanner].img}.avif`} className="w-full h-full object-cover" type='image/avif' />
