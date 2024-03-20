@@ -45,3 +45,5 @@ body {
     transform: scale(1.15);
   }
 }
+
+.scroll-ingredients::-webkit-scrollbar { width: 5px; }
