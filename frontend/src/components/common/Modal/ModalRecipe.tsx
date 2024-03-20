@@ -53,23 +53,29 @@ export const ModalRecipe = ({ handleClose, recipe }: IModalRecipe) => {
   }
   return (
     <AnimatePresence>
-      <div className='fixed inset-0 flex z-50 justify-center items-center transition-colors visible bg-black/80 w-full'>
-        <div className='bg-white rounded-2xl shadow transition-all max-w-md p-1.5 sm:max-w-xl md:max-w-5xl lg:max-w-7x w-full' onClick={(e) => e.stopPropagation()}>
+      <motion.div 
+        initial={{ opacity: 0, height: 0 }}
+        animate={{ opacity: 1, height: 'auto' }}
+        exit={{ opacity: 0, y: 0 }}
+        transition={{ duration: 0.5, ease: 'easeInOut' }}
+        className='fixed inset-0 flex z-50 justify-center items-center transition-colors visible bg-black/90 w-full px-2'
+      >
+        <div className='bg-white h-[75%] md:h-auto rounded-2xl shadow transition-all max-w-md p-1.5 sm:max-w-xl md:max-w-5xl lg:max-w-7x w-full' onClick={(e) => e.stopPropagation()}>
           <button 
             className='absolute top-2 right-2 font-bold p-2 border border-neutral-200 rounded-md bg-white hover:bg-gray-300'
             onClick={handleClose}
           >
             <IoCloseOutline className='w-6 h-6 text-black' />
           </button>
-          <div className='w-full h-auto min-h-[600px] border-white bg-first/50 rounded-2xl p-2'>
+          <div className='w-full h-auto min-h-20 md:min-h-[600px] border-white bg-first/50 rounded-2xl p-2 max-h-full overflow-y-scroll'>
             <div className='w-full h-full flex flex-col items-start justify-start px-5 py-8'>
-              <h1 className='title font-bold text-4xl w-full text-left'>{recipe.label}</h1>
-              <div className='w-full h-full flex items-start'>
-                <div className='w-[60%] h-full flex flex-col items-start'>
+              <h1 className='title font-bold text-2xl md:text-4xl w-full text-left'>{recipe.label}</h1>
+              <div className='w-full h-full flex flex-col md:flex-row items-start'>
+                <div className='w-full md:w-[60%] h-full flex flex-col items-start'>
                   <div className='mt-5 w-full text-left pt-4'>
                     <button 
                       type='button'
-                      className='w-[80%] border-b-2 border-first px-2 py-1 mb-3'
+                      className='w-full md:w-[80%] border-b-2 border-first px-2 py-1 mb-3'
                       onClick={handleActiveInfo}
                     >
                       <div className='w-full flex items-center justify-between'>
@@ -82,13 +88,25 @@ export const ModalRecipe = ({ handleClose, recipe }: IModalRecipe) => {
                         </motion.div>
                       </div>
                     </button>
-                    <div className='w-[80%] h-full'>
+                    <div className='w-full md:w-[80%] h-full'>
                       <AnimatePresence>
                         {
                           isActiveInfo && 
                           <>
-                            <div className='w-full h-auto flex flex-wrap items-start gap-2 mt-4'>
-                              <div className='w-36 h-16 flex items-center justify-center gap-3'>
+                            <motion.div 
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: 'auto' }}
+                              exit={{ opacity: 0, height: 0 }}
+                              transition={{ duration: 0.5, ease: 'easeInOut' }}
+                              className='w-full h-auto flex flex-wrap items-start gap-2 mt-4'
+                            >
+                              <motion.div
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: 10 }}
+                                transition={{ duration: 0.5 }}  
+                                className='w-36 h-16 flex items-center justify-center gap-3'
+                              >
                                 <div className='w-6'>
                                   <HiOutlineExternalLink className='w-6 h-6'/>
                                 </div>
@@ -99,81 +117,123 @@ export const ModalRecipe = ({ handleClose, recipe }: IModalRecipe) => {
                                     className='w-full text-left'
                                     target='_blank'
                                   >
-                                    <span className='text-gray-900 text-md md:text-sm text-left w-full'>{truncateLabel(recipe.source, 10)}</span>
+                                    <span className='text-gray-900 text-md md:text-md text-left w-full'>{truncateLabel(recipe.source, 10)}</span>
                                   </Link>
                                 </div>
-                              </div>
-                              <div className='w-36 h-16 flex items-center justify-center gap-3'>
+                              </motion.div>
+                              <motion.div
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: 10 }}
+                                transition={{ duration: 0.5 }}  
+                                className='w-36 h-16 flex items-center justify-center gap-3'
+                              >
                                 <div className='w-6'>
                                   <PiTimerFill className='w-6 h-6'/>
                                 </div>
                                 <div className='w-full flex flex-col items-center justify-center'>
                                   <span className='font-bold text-left w-full tracking-wide'>COOK TIME</span>
-                                  <span className='text-gray-900 text-md md:text-sm ml-2 md:ml-1 text-left w-full'>{recipe.totalTime} Minutes</span>
+                                  <span className='text-gray-900 text-md md:text-md ml-2 md:ml-1 text-left w-full'>{recipe.totalTime} Minutes</span>
                                 </div>
-                              </div>
-                              <div className='w-36 h-16 flex items-center justify-center gap-3'>
+                              </motion.div>
+                              <motion.div 
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: 10 }}
+                                transition={{ duration: 0.5 }} 
+                                className='w-36 h-16 flex items-center justify-center gap-3'
+                              >
                                 <div className='w-6'>
                                   <PiForkKnifeFill className='w-6 h-6'/>
                                 </div>
                                 <div className='w-full flex flex-col items-center justify-center'>
                                   <span className='font-bold text-left w-full tracking-wide'>MEAL TYPE</span>
-                                  <span className='text-gray-900 text-md md:text-sm ml-2 md:ml-1 text-left w-full'>{recipe.mealType[0]}</span>
+                                  <span className='text-gray-900 text-md md:text-md ml-2 md:ml-1 text-left w-full'>{recipe.mealType[0]}</span>
                                 </div>
-                              </div>
-                              <div className='w-36 h-16 flex items-center justify-center gap-3'>
+                              </motion.div>
+                              <motion.div 
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: 10 }}
+                                transition={{ duration: 0.5 }} 
+                                className='w-36 h-16 flex items-center justify-center gap-3'
+                              >
                                 <div className='w-6'>
                                   <FaBowlFood className='w-6 h-6'/>
                                 </div>
                                 <div className='w-full flex flex-col items-center justify-center'>
                                   <span className='font-bold text-left w-full tracking-wide'>DISH TYPE</span>
-                                  <span className='text-gray-900 text-md md:text-sm ml-2 md:ml-1 text-left w-full'>{recipe.dishType[0]}</span>
+                                  <span className='text-gray-900 text-md md:text-md ml-2 md:ml-1 text-left w-full'>{recipe.dishType[0]}</span>
                                 </div>
-                              </div>
-                              <div className='w-36 h-16 flex items-center justify-center gap-3'>
+                              </motion.div>
+                              <motion.div 
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: 10 }}
+                                transition={{ duration: 0.5 }} 
+                                className='w-36 h-16 flex items-center justify-center gap-3'
+                              >
                                 <div className='w-6'>
                                   <LuUser2 className='w-6 h-6'/>
                                 </div>
                                 <div className='w-full flex flex-col items-center justify-center'>
                                   <span className='font-bold text-left w-full tracking-wide'>MEMBERS</span>
-                                  <span className='text-gray-900 text-md md:text-sm ml-2 md:ml-1 text-left w-full'>{recipe.yield}</span>
+                                  <span className='text-gray-900 text-md md:text-md ml-2 md:ml-1 text-left w-full'>{recipe.yield}</span>
                                 </div>
-                              </div>
-                              <div className='w-36 h-16 flex items-center justify-center gap-3'>
+                              </motion.div>
+                              <motion.div 
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: 10 }}
+                                transition={{ duration: 0.5 }} 
+                                className='w-36 h-16 flex items-center justify-center gap-3'
+                              >
                                 <div className='w-6'>
                                   <BiWorld className='w-6 h-6'/>
                                 </div>
                                 <div className='w-full flex flex-col items-center justify-center'>
                                   <span className='font-bold text-left w-full tracking-wide'>COUNTRY</span>
-                                  <span className='text-gray-900 text-md md:text-sm ml-2 md:ml-1 text-left w-full'>{recipe.cuisineType[0]}</span>
+                                  <span className='text-gray-900 text-md md:text-md ml-2 md:ml-1 text-left w-full'>{recipe.cuisineType[0]}</span>
                                 </div>
-                              </div>
-                            </div>
-                            <div className='mt-2 w-full'>
+                              </motion.div>
+                            </motion.div>
+                            <motion.div 
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: 'auto' }}
+                              exit={{ opacity: 0, height: 0 }}
+                              transition={{ duration: 0.5, ease: 'easeInOut' }}
+                              className='mt-2 w-full'
+                            >
                             {
                               recipe?.tags &&
                               (
-                                <div className='w-full h-10 bg-white flex items-center justify-center'>
+                                <motion.div 
+                                  className='w-full h-12 flex items-center justify-center px-1'
+                                  initial={{ opacity: 0, y: 10 }}
+                                  animate={{ opacity: 1, y: 0 }}
+                                  exit={{ opacity: 0, y: 10 }}
+                                  transition={{ duration: 0.5 }} 
+                                >
                                   <div className='w-10'>
                                     <FaTag className='w-6 h-6 rotate-90'/>
                                   </div>
                                   <div className='w-full'>
                                     {
                                       recipe.tags?.map(tag => (
-                                        <span className='text-gray-900 text-md md:text-sm ml-2 md:ml-1 text-left w-full mx-3'># {tag}</span>
+                                        <span className='text-gray-900 text-md md:text-lg font-bold ml-2 md:ml-3 text-left w-full'>#{tag}</span>
                                       ))
                                     }
                                   </div>
-                                </div>
+                                </motion.div>
                               )
                             }
-                            </div>
+                            </motion.div>
                           </>
                         }
                       </AnimatePresence>
                     </div>
                   </div>
-                  <div className='mt-5 w-[80%] text-left pt-3'>
+                  <div className='mt-5 w-full md:w-[80%] text-left pt-3'>
                     <button 
                       type='button'
                       className='w-full border-b-2 border-first  px-2 py-1 mb-3'
@@ -198,7 +258,7 @@ export const ModalRecipe = ({ handleClose, recipe }: IModalRecipe) => {
                           animate={{ opacity: 1, height: 'auto' }}
                           exit={{ opacity: 0, height: 0 }}
                           transition={{ duration: 0.5, ease: 'easeInOut' }}
-                          className='max-h-44 overflow-y-scroll scroll-ingredients'
+                          className='h-full md:max-h-44 md:overflow-y-scroll scroll-ingredients'
                         >
                           {
                             recipe.ingredientLines.map((ing, key) => (
@@ -226,7 +286,7 @@ export const ModalRecipe = ({ handleClose, recipe }: IModalRecipe) => {
                       </AnimatePresence>
                     </div>
                   </div>
-                  <div className='w-[80%] mt-5 text-left pt-3'>
+                  <div className='w-full md:w-[80%] mt-5 text-left pt-3'>
                     <button 
                       type='button'
                       className='w-full border-b-2 border-first  px-2 py-1 mb-3'
@@ -257,52 +317,52 @@ export const ModalRecipe = ({ handleClose, recipe }: IModalRecipe) => {
                             <motion.div 
                               initial={{ opacity: 0, y: 10 }}
                               animate={{ opacity: 1, y: 0 }}
-                              exit={{ opacity: 0, y: 10 }}
+                              exit={{ opacity: 0, y: -10 }}
                               transition={{ duration: 0.5 }} 
                               className='bg-white w-24 h-auto p-0.5 rounded-lg'
                             >
                               <div className='bg-first flex flex-col items-center justify-center rounded-lg h-full w-full py-2.5'>
                                 <p className='font-bold text-xl'>{roundedDecimal(recipe.calories, 0)}</p>
-                                <p className='font-bold text-lg text-black'>Calories</p>
+                                <p className='font-bold text-md md:text-lg text-black'>Calories</p>
                                 <p className='text-black/60 font-bold'>Kcal</p>
                               </div>
                             </motion.div>
                             <motion.div 
                               initial={{ opacity: 0, y: 10 }}
                               animate={{ opacity: 1, y: 0 }}
-                              exit={{ opacity: 0, y: 10 }}
+                              exit={{ opacity: 0, y: -10 }}
                               transition={{ duration: 0.5 }} 
                               className='bg-white w-24 h-auto p-0.5 rounded-lg'
                             >
                               <div className='bg-first flex flex-col items-center justify-center rounded-lg h-full w-full py-2.5'>
                                 <p className='font-bold text-xl'>{roundedDecimal(recipe.protein.total, 0)}</p>
-                                <p className='font-bold text-lg'>Protein</p>
+                                <p className='font-bold text-md md:text-lg'>Protein</p>
                                 <p className='text-black/60 font-bold'>g</p>
                               </div>
                             </motion.div>
                             <motion.div 
                               initial={{ opacity: 0, y: 10 }}
                               animate={{ opacity: 1, y: 0 }}
-                              exit={{ opacity: 0, y: 10 }}
+                              exit={{ opacity: 0, y: -10 }}
                               transition={{ duration: 0.5 }} 
                               className='bg-white w-24 h-auto p-0.5 rounded-lg'
                             >
                               <div className='bg-first flex flex-col items-center justify-center rounded-lg h-full w-full py-2.5'>
                                 <p className='font-bold text-xl'>{roundedDecimal(recipe.fats.total, 0)}</p>
-                                <p className='font-bold text-lg'>Fats</p>
+                                <p className='font-bold text-md md:text-lg'>Fats</p>
                                 <p className='text-black/60 font-bold'>g</p>
                               </div>
                             </motion.div>
                             <motion.div 
                               initial={{ opacity: 0, y: 10 }}
                               animate={{ opacity: 1, y: 0 }}
-                              exit={{ opacity: 0, y: 10 }}
+                              exit={{ opacity: 0, y: -10 }}
                               transition={{ duration: 0.5 }} 
                               className='bg-white w-24 h-auto p-0.5 rounded-lg'
                             >
                               <div className='bg-first flex flex-col items-center justify-center rounded-lg h-full w-full py-2.5'>
                                 <p className='font-bold text-xl'>{roundedDecimal(recipe.carbs.total, 0)}</p>
-                                <p className='font-bold text-lg'>Carbs</p>
+                                <p className='font-bold text-md md:text-lg'>Carbs</p>
                                 <p className='text-black/60 font-bold'>g</p>
                               </div>
                             </motion.div>
@@ -313,7 +373,7 @@ export const ModalRecipe = ({ handleClose, recipe }: IModalRecipe) => {
                     </div>
                   </div>
                 </div>
-                <div className='w-[40%] h-full flex'>
+                <div className='w-full md:w-[40%] h-full flex mt-5 md:mt-0'>
                   <div className='flex flex-col items-center justify-center w-full h-full'>
                     <div className='py-5 w-full flex items-center justify-end gap-2'>
                       <button className='bg-first p-2 rounded-lg hover:bg-first/85'>
@@ -330,7 +390,7 @@ export const ModalRecipe = ({ handleClose, recipe }: IModalRecipe) => {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </AnimatePresence>
   )
 }
