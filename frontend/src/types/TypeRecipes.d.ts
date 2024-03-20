@@ -91,5 +91,6 @@ export type TypeFilters = {
     to: number;
   };
   ingredients: number;
-  fields: string[];
+  diets: string[];
+  meals: string[];
 }

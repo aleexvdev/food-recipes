@@ -19,7 +19,8 @@ export const PageRecipes = () => {
         to: 0
       },
       ingredients: 0,
-      fields: []
+      diets: [],
+      meals: []
     }
   });
 
@@ -65,6 +66,8 @@ export const PageRecipes = () => {
 
   const handleFormSubmit = (formData: TypeValuesForm) => {
     setFormValues(formData);
+    console.log(formData)
+    console.log(formValues)
   };
 
   return (

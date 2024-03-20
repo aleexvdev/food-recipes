@@ -18,7 +18,8 @@ export const FilterRecipes = ({ getFilters }: IFilterRecipes) => {
       to: 0,
     },
     ingredients: 0,
-    fields: []
+    diets: [],
+    meals: []
   });
 
   const handleShowFilter = () => {
@@ -26,19 +27,40 @@ export const FilterRecipes = ({ getFilters }: IFilterRecipes) => {
   }
 
   const handleFilterCheckbox = (evt: React.ChangeEvent<HTMLInputElement>) => {
-    const { checked, dataset } = evt.target
-    const name = dataset.name?.toString();
-    if (name) {
-      setFilters((prevFilters) => {
-        if (checked) {
-          return { ...prevFilters, fields: [...prevFilters.fields, name] };
-        } else {
-          return {
+    const { checked, name, value } = evt.target;
+    if (name === "diets") {
+      if (checked) {
+        if (!filters.diets.includes(value)) {
+          setFilters((prevFilters) => ({
             ...prevFilters,
-            fields: prevFilters.fields.filter((filter) => filter !== name),
-          };
+            diets: [...prevFilters.diets, value],
+          }));
         }
-      });
+      } else {
+        if (filters.diets.includes(value)) {
+          setFilters((prevFilters) => ({
+            ...prevFilters,
+            diets: prevFilters.diets.filter((diet) => diet !== value),
+          }));
+        }
+      }
+    }
+    if (name === "meals") {
+      if (checked) {
+        if (!filters.meals.includes(value)) {
+          setFilters((prevFilters) => ({
+            ...prevFilters,
+            meals: [...prevFilters.meals, value],
+          }));
+        }
+      } else {
+        if (filters.meals.includes(value)) {
+          setFilters((prevFilters) => ({
+            ...prevFilters,
+            meals: prevFilters.meals.filter((meal) => meal !== value),
+          }));
+        }
+      }
     }
   };
 
@@ -83,7 +105,8 @@ export const FilterRecipes = ({ getFilters }: IFilterRecipes) => {
         to: 0,
       },
       ingredients: 0,
-      fields: []
+      diets: [],
+      meals: []
     });
   }
 
@@ -167,7 +190,7 @@ export const FilterRecipes = ({ getFilters }: IFilterRecipes) => {
                   <div className='w-full grid grid-cols-2 md:grid-cols-1'>
                   {
                     categories.map(({ id, category }) => (
-                      <CheckBox key={id} text={category} handleChangeCheckbox={handleFilterCheckbox} />
+                      <CheckBox key={id} type={'meals'} text={category} handleChangeCheckbox={handleFilterCheckbox} />
                     ))
                   }
                   </div>
@@ -177,7 +200,7 @@ export const FilterRecipes = ({ getFilters }: IFilterRecipes) => {
                   <div className='w-full grid grid-cols-2 md:grid-cols-1'>
                   {
                     diets.map(({ id, diet }) => (
-                      <CheckBox key={id} text={diet} handleChangeCheckbox={handleFilterCheckbox} />
+                      <CheckBox key={id} type={'diets'} text={diet} handleChangeCheckbox={handleFilterCheckbox} />
                     ))
                   }
                   </div>

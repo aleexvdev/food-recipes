@@ -8,7 +8,8 @@ export const useRecipeForm = (onSubmitForm: (formData: TypeValuesForm) => void) 
   const [filters, setFilters] = useState<TypeFilters>({
     calories: { from: 0, to: 0 },
     ingredients: 0,
-    fields: [],
+    diets: [],
+    meals: []
   });
 
   const handleFilters = (newFilters: TypeFilters) => {
