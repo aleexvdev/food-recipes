@@ -74,4 +74,11 @@ body {
   border-radius: 2px;
 }
 
+.swiper-button-next,
+.swiper-button-prev {
+  color: #FF642F !important;
+}
 
+.swiper-pagination-bullet-active {
+  background: #FF642F !important;
+}

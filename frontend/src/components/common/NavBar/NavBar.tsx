@@ -82,11 +82,7 @@ const NavBar: React.FC = () => {
               aria-controls="mobile-menu"
               aria-expanded={isOpen}
             >
-              {isOpen ? (
-                <MdClose className={`${isScrolled ? 'text-black' : 'text-white'} w-7 h-7`} />
-              ) : (
-                <FaBars className={`${isScrolled ? 'text-black' : 'text-white'} w-6 h-6`} />
-              )}
+              <FaBars className={`${isScrolled ? 'text-black' : 'text-white'} w-6 h-6`} />
             </button>
           </div>
         </div>
@@ -99,8 +95,21 @@ const NavBar: React.FC = () => {
             animate="animate"
             exit="exit"
             transition={{ duration: 0.2 }}
-            className={`fixed left-0 top-16 w-full h-screen origin-top bg-white overflow-hidden`}
+            className={`fixed left-0 top-0 w-full h-screen origin-top bg-white overflow-hidden`}
           >
+            <div className='w-full flex items-center justify-between h-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+              <div className="flex-shrink-0">
+                <Logo active={true} />
+              </div>
+              <button
+                className="bg-transparent inline-flex items-center justify-center"
+                onClick={toggleMenu}
+                aria-controls="mobile-menu"
+                aria-expanded={isOpen}
+              >
+                <MdClose className='text-black w-7 h-7' />
+              </button>
+            </div>
             <div className="flex h-full flex-col">
               <motion.div
                 variants={containerVars}
