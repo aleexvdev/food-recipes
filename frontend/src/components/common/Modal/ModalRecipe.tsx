@@ -51,6 +51,7 @@ export const ModalRecipe = ({ handleClose, recipe }: IModalRecipe) => {
       setIsActiveIngr(false);
     }
   }
+
   return (
     <AnimatePresence>
       <motion.div 

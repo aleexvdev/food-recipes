@@ -4,7 +4,7 @@ import { FoodRecipesContext } from '../contexts/ContextRecipe'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useLocation } from 'react-router'
 import { AnimatedOutlet } from '../components/AnimatedOutlet'
-import NavBar from '../components/common/NavBar/NavBar'
+import { Header } from '../components/common/Header/Header'
 
 export const PageHero = () => {
 
@@ -13,7 +13,7 @@ export const PageHero = () => {
 
   return (
     <div className='relative'>
-      <NavBar />
+      <Header />
       <FoodRecipesContext.Provider value={{ foodRecipes, dispatchRecipes }}>
         <AnimatePresence mode='popLayout'>
 					<motion.div

@@ -22,14 +22,13 @@ export const Banner = () => {
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.8 }}
           transition={{ duration: 0.8, ease: 'easeInOut' }}
-          //slider-bg // img-cover
         >
           <picture>
-            <source src={`assets/img-home/${banners[currentBanner].img}.avif`} className="w-full h-full object-cover" type='image/avif' />
-            <source src={`assets/img-home/${banners[currentBanner].img}.webp`} className="w-full h-full object-cover" type='image/webp' />
+            <source src={`assets/slider-banner/${banners[currentBanner].img}.avif`} className="w-full h-full object-cover" type='image/avif' />
+            <source src={`assets/slider-banner/${banners[currentBanner].img}.webp`} className="w-full h-full object-cover" type='image/webp' />
           </picture>
           <img
-            src={`assets/img-home/${banners[currentBanner].img}.jpg`}
+            src={`assets/slider-banner/${banners[currentBanner].img}.jpg`}
             alt={banners[currentBanner].img}
             className="w-full h-full object-cover"
           />
