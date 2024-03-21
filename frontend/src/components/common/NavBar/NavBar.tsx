@@ -65,7 +65,7 @@ const NavBar: React.FC = () => {
                     key={link}
                     className={({ isActive }) =>
                       `font-semibold text-xl hover:text-first ${
-                        isActive ? 'text-first' : isScrolled ? 'text-black' : 'text-white'
+                        isActive ? 'text-first active-nav' : isScrolled ? 'text-black' : 'text-white'
                       }`
                     }
                   >

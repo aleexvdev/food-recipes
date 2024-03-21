@@ -167,7 +167,7 @@ function App() {
             </motion.div>
             <Link to={'/recipes'}>
               <motion.button
-                className="bg-first text-white py-2 px-5 hover:bg-first/85 transition-colors text-2xl md:text-2xl"
+                className="bg-first text-white py-2 px-5 hover:bg-first/85 transition-colors text-2xl md:text-2xl rounded-lg"
                 animate={controls}
               >
                 Explore Recipes

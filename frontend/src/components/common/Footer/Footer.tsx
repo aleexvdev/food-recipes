@@ -24,7 +24,7 @@ export const Footer = () => {
         </div>
       </div>
       <div className='bg-first w-full h-auto py-2'>
-        <p className='text-white text-center'>Made with @alexvdev</p>
+        <p className='text-white text-center'>Made by @alexvdev</p>
       </div>
     </footer>
   )
