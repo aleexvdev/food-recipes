@@ -7,9 +7,12 @@ import { RecipeReducerAction, TypeValuesForm } from '../types/TypeRecipes';
 import { FormRecipe } from '../components/common/Form/FormRecipe';
 import { RecipeComponent } from '../components/Recipes/RecipeComponent';
 import { Footer } from '../components/common/Footer/Footer';
-
+import imagen1 from '../../public/assets/slider-banner/hero-slider-1.jpg';
+import imagen2 from '../../public/assets/slider-banner/hero-slider-2.jpg';
+import imagen3 from '../../public/assets/slider-banner/hero-slider-3.jpg';
 export const PageRecipes = () => {
 
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const { foodRecipes, dispatchRecipes } = useFoodRecipeContext();
   const [formValues, setFormValues] = useState<TypeValuesForm>({
     query: 'ceviche',
@@ -23,6 +26,16 @@ export const PageRecipes = () => {
       meals: []
     }
   });
+
+  const imagenes = [imagen1, imagen2, imagen3];
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentImageIndex((currentImageIndex + 1) % imagenes.length);
+    }, 10000);
+
+    return () => clearInterval(intervalId);
+  }, [currentImageIndex, imagenes.length]);
 
   useEffect(() => {
     const fetchData = async () => {

@@ -111,25 +111,27 @@ export const FilterRecipes = ({ getFilters }: IFilterRecipes) => {
   }
 
   return (
-    <div className='pt-1 w-full h-auto'>
-      <button 
-        className='bg-first hover:bg-first/85 w-full rounded-lg py-2 flex items-center justify-center gap-3'
-        onClick={handleShowFilter}
-        type='button'
-      >
-        <span className='text-white text-lg'>Filter your search by...</span>
-        <motion.div
-          animate={{ rotate: showFilter ? 180 : 0 }}
-          transition={{ duration: 0.3 }}
+    <div className='w-full h-auto'>
+      <div className='flex items-center justify-center w-full'>
+        <button 
+          className='bg-first w-auto rounded-b-lg py-2 flex items-center justify-center gap-3 h-7 px-5'
+          onClick={handleShowFilter}
+          type='button'
         >
-          <FaCaretDown className='w-7 h-7 text-white' />
-        </motion.div>
-      </button>
+          <span className='text-white text-md'>Filter your search by...</span>
+          <motion.div
+            animate={{ rotate: showFilter ? 180 : 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <FaCaretDown className='w-7 h-7 text-white' />
+          </motion.div>
+        </button>
+      </div>
       <AnimatePresence>
         {
           showFilter && (
             <motion.div
-              className='mt-4 w-full h-auto bg-white px-5 py-5 rounded-lg transition-colors border-gray-400 border-2 shadow-xl'
+              className='mt-4 w-full h-full bg-white px-5 py-5 rounded-lg transition-colors border-gray-400 border-2 shadow-xl'
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
@@ -137,6 +139,7 @@ export const FilterRecipes = ({ getFilters }: IFilterRecipes) => {
                 duration: 0.5,
                 ease: 'easeInOut',
               }}
+              style={{ overflow: 'hidden' }}
             >
               <motion.div 
                 className='w-full h-auto flex flex-col md:flex-row items-start justify-between'
