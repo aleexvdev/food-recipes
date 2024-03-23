@@ -7,7 +7,6 @@ import { PageRecipes } from './pages/PageRecipes.tsx'
 import { PageBlogs } from './pages/PageBlogs.tsx'
 import App from './App.tsx'
 import './assets/index.css'
-import './assets/wave.css'
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
