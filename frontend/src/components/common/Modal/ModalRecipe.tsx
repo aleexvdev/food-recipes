@@ -61,7 +61,7 @@ export const ModalRecipe = ({ handleClose, recipe }: IModalRecipe) => {
         transition={{ duration: 0.5, ease: 'easeInOut' }}
         className='fixed inset-0 flex z-50 justify-center items-center transition-colors visible bg-black/90 w-full px-2'
       >
-        <div className='bg-white h-[75%] md:h-auto rounded-2xl shadow transition-all max-w-md p-1.5 sm:max-w-xl md:max-w-5xl lg:max-w-7x w-full' onClick={(e) => e.stopPropagation()}>
+        <div className='bg-white h-[75%] md:h-auto rounded-2xl shadow transition-all max-w-md p-1.5 sm:max-w-xl md:max-w-5xl w-full' onClick={(e) => e.stopPropagation()}>
           <button 
             className='absolute top-2 right-2 font-bold p-2 border border-neutral-200 rounded-md bg-white hover:bg-gray-300'
             onClick={handleClose}

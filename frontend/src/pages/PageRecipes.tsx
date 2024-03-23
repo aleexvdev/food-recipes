@@ -112,7 +112,7 @@ export const PageRecipes = () => {
         </AnimatePresence>
         <div className="absolute inset-0 flex items-center justify-center">
           <motion.div
-            className="text-center flex flex-col items-center justify-center max-w-md px-4 sm:max-w-lg md:max-w-xl lg:max-w-3xl"
+            className="text-center flex flex-col items-center justify-center max-w-md px-4 sm:max-w-lg md:max-w-3xl"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: 'easeInOut' }}
@@ -126,7 +126,7 @@ export const PageRecipes = () => {
               Explore Recipes
             </motion.h1>
             <motion.div
-              className="text-white text-xl mb-8 font-medium p-5 mt-5 rounded-xl"
+              className="text-white text-xl mb-8 font-medium p-5 mt-5 rounded-xl md:text-2xl"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: 'easeOut', delay: 0.4 }}
