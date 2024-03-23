@@ -81,6 +81,7 @@ body {
 
 .swiper-pagination-bullet-active {
   background: #FF642F !important;
+  /* background: #0E0D0C; */
 }
 
 .shape {
@@ -111,15 +112,6 @@ body {
   right: 0;
 }
 
-.section-recipe {
-  background: #0E0D0C;
-}
-
-.menu .banner-recipes-2 {
-  top: 0;
-  left: 0;
-}
-
 .move-anim { animation: move 5s linear infinite; }
 
 @keyframes move {
@@ -129,15 +121,14 @@ body {
   50% { transform: translateY(30px); }
 }
 
-.hero::after {
-  content: "";
-  background-image: url('../../public/assets/slider-banner/hero-slider-1.jpg');
-  position: fixed;
-  background-repeat: no-repeat;
-  background-size: cover;
+.svg-wave-animation {
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
-  z-index: -1;
+  height: 100%;
+  box-sizing: border-box;
+  display: block;
+  background-color: #0e4166;
+  background-image: linear-gradient(to bottom, rgba(14, 65, 102, 0.86), #0e4166);
 }
