@@ -13,12 +13,13 @@ import 'swiper/css/pagination';
 
 const routerConfig = [
   {
-    path: '/*',
+    path: '/',
     element: <PageHero />,
-    errorElement: <PageError />,
+    errorElement: <PageError errorCode={404} errorMessage='Not found' />,
     children: [
       {
         index: true,
+        path: '/',
         element: <App />
       },
       {
