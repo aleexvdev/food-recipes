@@ -11,7 +11,7 @@ interface IFilterRecipes {
 
 export const FilterRecipes = ({ getFilters }: IFilterRecipes) => {
 
-  const [showFilter, setShowFilter] = useState<boolean>(false);
+  const [showFilter, setShowFilter] = useState<boolean>(true);
   const [filters, setFilters] = useState<TypeFilters>({
     calories: {
       from: 0,
@@ -139,7 +139,7 @@ export const FilterRecipes = ({ getFilters }: IFilterRecipes) => {
                 duration: 0.5,
                 ease: 'easeInOut',
               }}
-              style={{ overflow: 'hidden' }}
+              style={{ overflow: 'hidden', zIndex: 1 }}
             >
               <motion.div 
                 className='w-full h-auto flex flex-col md:flex-row items-start justify-between'

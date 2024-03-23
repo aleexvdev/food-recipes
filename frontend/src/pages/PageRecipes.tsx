@@ -1,7 +1,7 @@
-import { Dispatch, useEffect, useState } from 'react';
+import { Dispatch, useEffect, useRef, useState } from 'react';
 import { useFoodRecipeContext } from '../contexts/ContextRecipe';
 import { fetchRecipes, fetchRecipesNext } from '../service/api';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { GrLinkNext } from 'react-icons/gr';
 import { RecipeReducerAction, TypeValuesForm } from '../types/TypeRecipes';
 import { FormRecipe } from '../components/common/Form/FormRecipe';
@@ -10,8 +10,13 @@ import { Footer } from '../components/common/Footer/Footer';
 import imagen1 from '../../public/assets/slider-banner/hero-slider-1.jpg';
 import imagen2 from '../../public/assets/slider-banner/hero-slider-2.jpg';
 import imagen3 from '../../public/assets/slider-banner/hero-slider-3.jpg';
+import { ScrollDown } from '../components/ScrollDown';
+
+const imagenes = [imagen1, imagen2, imagen3];
+
 export const PageRecipes = () => {
 
+  const nextSectionRef = useRef<HTMLElement>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const { foodRecipes, dispatchRecipes } = useFoodRecipeContext();
   const [formValues, setFormValues] = useState<TypeValuesForm>({
@@ -26,8 +31,6 @@ export const PageRecipes = () => {
       meals: []
     }
   });
-
-  const imagenes = [imagen1, imagen2, imagen3];
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -79,39 +82,81 @@ export const PageRecipes = () => {
 
   const handleFormSubmit = (formData: TypeValuesForm) => {
     setFormValues(formData);
-    console.log(formData)
-    console.log(formValues)
   };
 
   return (
     <main className='h-auto'>
-      <section className='mt-32 flex flex-col items-center justify-center w-full h-auto overflow-hidden bg-white/30'>
-        <div className='text-center max-w-md px-4 sm:max-w-lg md:max-w-xl lg:max-w-2xl'>
+      <section className='flex flex-col items-center justify-center w-full min-h-[100vh] overflow-hidden relative'>
+        <AnimatePresence>
+          <motion.div
+            initial={{ opacity: 0, scale: 1 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            transition={{
+              duration: 0.8,
+              ease: "easeInOut",
+              transition: {
+                type: "tween",
+                duration: 0.5,
+                ease: "circOut",
+              },
+            }}
+          >
+            <img
+              key={imagenes[currentImageIndex]}
+              src={imagenes[currentImageIndex]}
+              alt="Food Recipes"
+              className="w-screen h-screen object-cover banner-bg"
+            />
+          </motion.div>
+        </AnimatePresence>
+        <div className="absolute inset-0 flex items-center justify-center">
+          <motion.div
+            className="text-center flex flex-col items-center justify-center max-w-md px-4 sm:max-w-lg md:max-w-xl lg:max-w-5xl"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: 'easeInOut' }}
+          >
+            <motion.h1
+              className="text-white text-5xl font-bold leading-10 tracking-wide md:text-8xl mb-4 banner-title"
+              initial={{ opacity: 0, y: -50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
+            >
+              Explore Recipes
+            </motion.h1>
+            <motion.div
+              className="text-white text-xl mb-8 font-medium p-5 mt-5 rounded-xl"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: 'easeOut', delay: 0.4 }}
+            >
+              <p>Discover a world of flavors, explore a vast collection of recipes, and delight your palate with exquisite dishes.</p>
+            </motion.div>
+            <div className='mt-6 text-center mx-auto w-full max-w-md px-4 sm:max-w-lg md:max-w-xl lg:max-w-2xl'>
+              <FormRecipe onSubmitForm={handleFormSubmit} />
+            </div>
+            <ScrollDown targetRef={nextSectionRef} />
+          </motion.div>
+        </div>
+      </section>
+      <section 
+        ref={nextSectionRef}
+        className='h-auto w-full flex flex-col items-center justify-center mx-auto max-w-6xl pt-20 pb-0 transition-opacity'
+      >
+        <div className='w-full text-center max-w-md px-4 sm:max-w-lg md:max-w-4xl'>
           <motion.h1
-            className="text-black text-5xl font-bold leading-10 tracking-wide sm:text-6xl md:text-6xl lg:text-6xl mb-4"
+            className="text-black text-5xl font-bold leading-10 tracking-wide md:text-8xl mb-4 banner-title"
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
           >
-            Explore Recipes
+            Latest Recipes
           </motion.h1>
-          <motion.div
-            className="text-xl  mb-8 font-medium p-5 mt-5 rounded-xl bg-white/50"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.4 }}
-          >
-            <p>Discover a world of flavors, explore a vast collection of recipes, and delight your palate with exquisite dishes.</p>
-          </motion.div>
         </div>
-        <div className='mt-6 text-center mx-auto w-full max-w-md px-4 sm:max-w-lg md:max-w-xl lg:max-w-2xl'>
-          <FormRecipe onSubmitForm={handleFormSubmit} />
-        </div>
-      </section>
-      <section className='h-auto w-full flex flex-col items-center justify-center pt-20 mx-auto max-w-6xl mb-10 transition-opacity'>
-        <div className='text-center max-w-md px-4 sm:max-w-xl md:max-w-5xl lg:max-w-7xl'>
+        <div className='text-center max-w-md px-4 sm:max-w-xl md:max-w-5xl lg:max-w-7xl pt-10'>
           <RecipeComponent foodRecipes={foodRecipes.recipes} />
-          <div className='py-10 w-full flex items-center justify-between px-1'>
+          <div className='pt-10 w-full flex items-center justify-between px-1'>
             {
               !foodRecipes.loading && foodRecipes?.recipes?.next ? (
                 <>

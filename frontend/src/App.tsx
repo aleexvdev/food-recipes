@@ -78,7 +78,7 @@ function App() {
           >
             <motion.h1
               key={textBanner[currentImageIndex]}
-              className="text-white text-6xl font-medium tracking-wide sm:text-3xl md:text-8xl mb-4 banner-title"
+              className="text-white text-6xl font-bold tracking-wide sm:text-3xl md:text-8xl mb-4 banner-title"
               initial={{ opacity: 0, y: -50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: 'easeInOut', delay: 0.2 }}
