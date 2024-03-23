@@ -84,34 +84,6 @@ body {
   /* background: #0E0D0C; */
 }
 
-.shape {
-  display: none;
-  position: absolute;
-  max-width: max-content;
-}
-.menu .shape {
-  display: block;
-  width: 38%;
-  margin-top: 50px;
-}
-
-.shape {
-  display: none;
-  position: absolute;
-  max-width: max-content;
-  z-index: -1;
-}
-
-.menu .shape-2 {
-  top: 0;
-  left: 0;
-}
-
-.menu .shape-3 {
-  bottom: 0;
-  right: 0;
-}
-
 .move-anim { animation: move 5s linear infinite; }
 
 @keyframes move {
@@ -120,3 +92,21 @@ body {
 
   50% { transform: translateY(30px); }
 }
+
+.slider-reveal {
+  transform: translateY(30px);
+  opacity: 0;
+  animation: sliderReveal 1s ease forwards;
+}
+@keyframes sliderReveal {
+  0% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+

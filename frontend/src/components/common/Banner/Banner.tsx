@@ -1,39 +1,61 @@
 import { useEffect, useState } from 'react';
-import { banners } from '../../../constans/constans';
 import { motion, AnimatePresence } from 'framer-motion';
 
-export const Banner = () => {
-  const [currentBanner, setCurrentBanner] = useState<number>(0);
+interface IBanner {
+  images: any[];
+}
+
+export const Banner = ({ images }: IBanner) => {
+  
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState(1);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentBanner((currentBanner + 1) % banners.length);
+      setDirection(1);
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
     }, 10000);
+
     return () => clearInterval(interval);
-  }, [currentBanner]);
+  }, [images.length]);
+
+  const variants = {
+    enter: {
+      opacity: 0,
+    },
+    center: {
+      opacity: 1,
+      transition: {
+        duration: 1,
+        ease: 'easeInOut',
+      },
+    },
+    exit: {
+      opacity: 0,
+      transition: {
+        duration: 1,
+        ease: 'easeInOut',
+      },
+    },
+  };
 
   return (
-    <div className="w-full min-h-screen absolute overflow-hidden inset-0 -z-20">
-      <AnimatePresence initial={false}>
+    <div className="w-screen h-screen relative overflow-hidden">
+      <AnimatePresence initial={false} custom={direction}>
         <motion.div
-          key={banners[currentBanner].img}
-          className="w-full h-full absolute inset-0 scale-125 select-none banner-bg"
-          initial={{ opacity: 0, scale: 1.2 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.8 }}
-          transition={{ duration: 0.8, ease: 'easeInOut' }}
-        >
-          <picture>
-            <source src={`assets/slider-banner/${banners[currentBanner].img}.avif`} className="w-full h-full object-cover" type='image/avif' />
-            <source src={`assets/slider-banner/${banners[currentBanner].img}.webp`} className="w-full h-full object-cover" type='image/webp' />
-          </picture>
-          <img
-            src={`assets/slider-banner/${banners[currentBanner].img}.jpg`}
-            alt={banners[currentBanner].img}
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-        </motion.div>
+          key={images[currentIndex]}
+          className="w-full h-full banner-bg"
+          style={{
+            backgroundImage: `url(${images[currentIndex]})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+          variants={variants}
+          initial="enter"
+          animate="center"
+          exit="exit"
+          custom={direction}
+        />
       </AnimatePresence>
     </div>
   );

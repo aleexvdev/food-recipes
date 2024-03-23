@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
-import { AnimatePresence, motion, useAnimation } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { AnimatePresence, motion } from 'framer-motion';
 import { categories } from './constans/categories';
 import { CardCategory } from './components/common/Cards/CardCategory';
 import { Footer } from './components/common/Footer/Footer';
@@ -10,97 +9,37 @@ import imagen2 from '../public/assets/slider-banner/hero-slider-2.jpg';
 import imagen3 from '../public/assets/slider-banner/hero-slider-3.jpg';
 import { fadeIn } from './constans/motionVars';
 import { textBanner } from './constans/constans';
+import { Banner } from './components/common/Banner/Banner';
+import { SliderHero } from './components/common/Slider/SliderHero';
 
 function App() {
 
-  const controls = useAnimation();
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const imagenes = [imagen1, imagen2, imagen3];
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCurrentImageIndex((currentImageIndex + 1) % imagenes.length);
-    }, 10000);
-
-    return () => clearInterval(intervalId);
-  }, [currentImageIndex, imagenes.length]);
-
-  useEffect(() => {
     const interval = setInterval(() => {
-      controls.start({
-        opacity: 0,
-        y: 50,
-        transition: { duration: 0 },
-      }).then(() =>
-        controls.start({
-          opacity: 1,
-          y: 0,
-          transition: { duration: 0.6, ease: 'easeInOut', delay: 0.4 },
-        })
-      );
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % textBanner.length);
     }, 10000);
 
     return () => clearInterval(interval);
-  }, [controls]);
+  }, [currentIndex, textBanner.length]);
 
   return (
     <main className="h-auto">
       <section className='relative h-screen flex items-center justify-center w-full overflow-hidden bg-white/30'>
+        <Banner images={imagenes} />
         <AnimatePresence>
-          <motion.div
-            initial={{ opacity: 0, scale: 1 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            transition={{
-              duration: 0.8,
-              ease: "easeInOut",
-              transition: {
-                type: "tween",
-                duration: 0.5,
-                ease: "circOut",
-              },
-            }}
-          >
-            <img
-              key={imagenes[currentImageIndex]}
-              src={imagenes[currentImageIndex]}
-              alt="Food Recipes"
-              className="w-screen h-screen object-cover banner-bg"
-            />
-          </motion.div>
-        </AnimatePresence>
         <div className="absolute inset-0 flex items-center justify-center">
           <motion.div
-            className="text-center flex flex-col items-center justify-center max-w-md px-4 sm:max-w-lg md:max-w-xl lg:max-w-2xl"
+            className="text-center flex flex-col items-center justify-center max-w-md px-4 sm:max-w-lg md:max-w-4xl slider-reveal"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: 'easeInOut' }}
+            transition={{ duration: 1.2, ease: 'easeInOut' }}
           >
-            <motion.h1
-              key={textBanner[currentImageIndex]}
-              className="text-white text-6xl font-bold tracking-wide sm:text-3xl md:text-8xl mb-4 banner-title"
-              initial={{ opacity: 0, y: -50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: 'easeInOut', delay: 0.2 }}
-            >
-              {textBanner[currentImageIndex]}
-            </motion.h1>
-            <motion.div
-              className="text-xl sm:text-base md:text-2xl mb-8 font-medium p-5 mt-2 rounded-xl text-white"
-              animate={controls}
-            >
-              <p>Discover delectable cuisine and unforgettable moments in our welcoming, culinary haven.</p>
-            </motion.div>
-            <Link to={'/recipes'}>
-              <motion.button
-                className="bg-first text-white py-2 px-5 hover:bg-first/85 transition-colors text-2xl md:text-2xl rounded-lg"
-                animate={controls}
-              >
-                Explore Recipes
-              </motion.button>
-            </Link>
+            <SliderHero key={currentIndex} title={textBanner[currentIndex].title} subtitle={textBanner[currentIndex].subtitle} />
           </motion.div>
-        </div>
+        </div></AnimatePresence>
       </section>
       <section className='h-auto w-full flex items-center justify-center pt-20 pb-5'>
         <motion.div 
