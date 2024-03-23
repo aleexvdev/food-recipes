@@ -16,6 +16,7 @@ export type TypeBanner = {
 export type TypeCategories = {
   id: number;
   category: string;
+  description: string;
 }
 
 export type TypeDiets = {

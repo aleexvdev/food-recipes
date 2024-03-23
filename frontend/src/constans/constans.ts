@@ -24,17 +24,20 @@ export const foods: string[] = [
   "Tallarines Verdes"
 ];
 
-export const textBanner: {title:string, subtitle:string}[] = [
+export const textBanner: {title: string, subtitle: string, text: string}[] = [
   {
     title: "For the love of delicious food",
-    subtitle: "Descubre las recetas más deliciosas y cautivadoras para satisfacer tus papilas gustativas"
+    subtitle: "Irresistible delights",
+    text: "Discover the most delicious and captivating recipes to satisfy your taste buds"
   },
   {
     title: "Flavors Inspired by the Seasons",
-    subtitle: "Disfruta de sabores frescos y vibrantes que celebran la belleza de cada temporada"
+    subtitle: "Seasonal flavors",
+    text: "Enjoy fresh and vibrant flavors that celebrate the beauty of each season"
   },
   {
     title: "Where every flavor tells a story",
-    subtitle: "Embárcate en un viaje culinario donde cada bocado cuenta una historia única y cautivadora"
+    subtitle: "Culinary narratives",
+    text: "Embark on a culinary journey where every bite tells a unique and captivating story"
   }
 ]

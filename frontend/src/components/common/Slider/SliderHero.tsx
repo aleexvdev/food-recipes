@@ -6,9 +6,17 @@ interface ISliderHero {
   text?: string;
 }
 
-export const SliderHero = ({ title, subtitle }: ISliderHero) => {
+export const SliderHero = ({ title, subtitle, text }: ISliderHero) => {
   return (
     <div className="flex flex-col items-center justify-center h-screen">
+      <motion.span
+        className="text-white text-6xl font-bold tracking-wide sm:text-3xl md:text-2xl mb-4 banner-title slider-reveal opacity-0"
+        initial={{ y: 30, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.5, duration: 1, ease: 'easeInOut' }}
+      >
+        {subtitle}
+      </motion.span>
       <motion.h1
         className="text-white text-6xl font-bold tracking-wide sm:text-3xl md:text-8xl mb-4 banner-title slider-reveal opacity-0"
         initial={{ y: 30, opacity: 0 }}
@@ -23,7 +31,7 @@ export const SliderHero = ({ title, subtitle }: ISliderHero) => {
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 1.5, duration: 1, ease: 'easeInOut' }}
       >
-        {subtitle}
+        {text}
       </motion.p>
       <Link to={'/recipes'}>
         <motion.button

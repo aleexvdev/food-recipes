@@ -37,7 +37,7 @@ function App() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, ease: 'easeInOut' }}
           >
-            <SliderHero key={currentIndex} title={textBanner[currentIndex].title} subtitle={textBanner[currentIndex].subtitle} />
+            <SliderHero key={currentIndex} title={textBanner[currentIndex].title} subtitle={textBanner[currentIndex].subtitle} text={textBanner[currentIndex].text} />
           </motion.div>
         </div></AnimatePresence>
       </section>

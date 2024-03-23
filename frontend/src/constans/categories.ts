@@ -4,24 +4,29 @@ export const categories: TypeCategories[] = [
   {
     id: 1,
     category: "Breakfast",
+    description: "Energizing morning delights"
   },
   {
     id: 2,
     category: "Lunch",
+    description: "Midday culinary adventures"
   },
   {
     id: 3,
     category: "Dinner",
+    description: "Evening flavor sensations"
   },
   {
     id: 4,
     category: "Snack",
+    description: "Delectable bite-sized treats"
   },
   {
     id: 5,
     category: "Teatime",
-  },
-];
+    description: "Indulgent accompaniments for teatime bliss"
+  }
+ ];
 
 export const diets: TypeDiets[] = [
   {
