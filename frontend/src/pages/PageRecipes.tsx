@@ -7,12 +7,11 @@ import { RecipeReducerAction, TypeValuesForm } from '../types/TypeRecipes';
 import { FormRecipe } from '../components/common/Form/FormRecipe';
 import { RecipeComponent } from '../components/Recipes/RecipeComponent';
 import { Footer } from '../components/common/Footer/Footer';
-import imagen1 from '../../public/assets/slider-banner/hero-slider-1.jpg';
-import imagen2 from '../../public/assets/slider-banner/hero-slider-2.jpg';
-import imagen3 from '../../public/assets/slider-banner/hero-slider-3.jpg';
+import imagen1 from '../../public/assets/slider-banner/banner-recipe-1.jpg';
 import { ScrollDown } from '../components/ScrollDown';
+import { Banner } from '../components/common/Banner/Banner';
 
-const imagenes = [imagen1, imagen2, imagen3];
+const imagenes = [imagen1];
 
 export const PageRecipes = () => {
 
@@ -86,59 +85,39 @@ export const PageRecipes = () => {
 
   return (
     <main className='h-auto'>
-      <section className='flex flex-col items-center justify-center w-full min-h-[100vh] overflow-hidden relative'>
+      <section className='relative h-screen flex items-center justify-center w-full overflow-hidden bg-white/30'>
+        <Banner images={imagenes} />
         <AnimatePresence>
-          <motion.div
-            initial={{ opacity: 0, scale: 1 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            transition={{
-              duration: 0.8,
-              ease: "easeInOut",
-              transition: {
-                type: "tween",
-                duration: 0.5,
-                ease: "circOut",
-              },
-            }}
-          >
-            <img
-              key={imagenes[currentImageIndex]}
-              src={imagenes[currentImageIndex]}
-              alt="Food Recipes"
-              className="w-screen h-screen object-cover banner-bg"
-            />
-          </motion.div>
-        </AnimatePresence>
-        <div className="absolute inset-0 flex items-center justify-center">
-          <motion.div
-            className="text-center flex flex-col items-center justify-center max-w-md px-4 sm:max-w-lg md:max-w-3xl"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: 'easeInOut' }}
-          >
-            <motion.h1
-              className="text-white text-5xl font-bold leading-10 tracking-wide md:text-8xl mb-4 banner-title"
-              initial={{ opacity: 0, y: -50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
-            >
-              Explore Recipes
-            </motion.h1>
+          <div className="absolute inset-0 flex items-center justify-center">
             <motion.div
-              className="text-white text-xl mb-8 font-medium p-5 mt-5 rounded-xl md:text-2xl"
+              className="text-center flex flex-col items-center justify-center max-w-md px-4 sm:max-w-lg md:max-w-3xl"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: 'easeOut', delay: 0.4 }}
+              transition={{ duration: 0.8, ease: 'easeInOut' }}
             >
-              <p>Discover a world of flavors, explore a vast collection of recipes, and delight your palate with exquisite dishes.</p>
+              <motion.h1
+                className="text-white text-5xl font-bold leading-10 tracking-wide md:text-8xl mb-4 banner-title"
+                initial={{ opacity: 0, y: -50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
+              >
+                Explore Recipes
+              </motion.h1>
+              <motion.div
+                className="text-white text-xl mb-8 font-medium p-5 mt-5 rounded-xl md:text-2xl"
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: 'easeOut', delay: 0.4 }}
+              >
+                <p>Discover a world of flavors, explore a vast collection of recipes, and delight your palate with exquisite dishes.</p>
+              </motion.div>
+              <div className='mt-6 text-center mx-auto w-full max-w-md px-4 sm:max-w-lg md:max-w-xl lg:max-w-2xl'>
+                <FormRecipe onSubmitForm={handleFormSubmit} />
+              </div>
+              <ScrollDown targetRef={nextSectionRef} />
             </motion.div>
-            <div className='mt-6 text-center mx-auto w-full max-w-md px-4 sm:max-w-lg md:max-w-xl lg:max-w-2xl'>
-              <FormRecipe onSubmitForm={handleFormSubmit} />
-            </div>
-            <ScrollDown targetRef={nextSectionRef} />
-          </motion.div>
-        </div>
+          </div>
+        </AnimatePresence>
       </section>
       <section 
         ref={nextSectionRef}

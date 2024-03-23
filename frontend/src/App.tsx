@@ -30,16 +30,17 @@ function App() {
       <section className='relative h-screen flex items-center justify-center w-full overflow-hidden bg-white/30'>
         <Banner images={imagenes} />
         <AnimatePresence>
-        <div className="absolute inset-0 flex items-center justify-center">
-          <motion.div
-            className="text-center flex flex-col items-center justify-center max-w-md px-4 sm:max-w-lg md:max-w-4xl slider-reveal"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, ease: 'easeInOut' }}
-          >
-            <SliderHero key={currentIndex} title={textBanner[currentIndex].title} subtitle={textBanner[currentIndex].subtitle} text={textBanner[currentIndex].text} />
-          </motion.div>
-        </div></AnimatePresence>
+          <div className="absolute inset-0 flex items-center justify-center">
+            <motion.div
+              className="text-center flex flex-col items-center justify-center max-w-md px-4 sm:max-w-lg md:max-w-4xl slider-reveal"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.2, ease: 'easeInOut' }}
+            >
+              <SliderHero key={currentIndex} title={textBanner[currentIndex].title} subtitle={textBanner[currentIndex].subtitle} text={textBanner[currentIndex].text} />
+            </motion.div>
+          </div>
+        </AnimatePresence>
       </section>
       <section className='h-auto w-full flex items-center justify-center pt-20 pb-5'>
         <motion.div 
