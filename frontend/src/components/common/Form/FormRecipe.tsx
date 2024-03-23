@@ -2,6 +2,7 @@ import { useRecipeForm } from '../../../hooks/UseForm';
 import { motion } from 'framer-motion';
 import { Input } from '../Input/Input';
 import { TypeValuesForm } from '../../../types/TypeRecipes';
+import { FilterRecipes } from '../../Filters/FilterRecipes';
 
 interface IFormRecipe {
   onSubmitForm: (formData: TypeValuesForm) => void;
@@ -9,7 +10,7 @@ interface IFormRecipe {
 
 export const FormRecipe = ({ onSubmitForm }: IFormRecipe) => {
 
-  const { value, handleSubmit, onChangeInput } = useRecipeForm(onSubmitForm);
+  const { value, handleSubmit, onChangeInput, handleFilters } = useRecipeForm(onSubmitForm);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -26,14 +27,14 @@ export const FormRecipe = ({ onSubmitForm }: IFormRecipe) => {
           onChangeInput={onChangeInput} 
         />
       </motion.div>
-      {/* <motion.div 
+      <motion.div 
         className='flex items-center justify-center w-full h-full'
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: 'easeOut', delay: 1.0 }}
       >
         <FilterRecipes getFilters={handleFilters} />
-      </motion.div> */}
+      </motion.div>
     </form>
   )
 }

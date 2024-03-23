@@ -125,7 +125,7 @@ function App() {
           </div>
         </motion.div>
       </section>
-      <section className='h-auto w-full flex flex-col items-center justify-center pt-20 mx-auto max-w-5xl'>
+      <section className='h-auto w-full flex flex-col items-center justify-center py-20 mx-auto max-w-5xl'>
         <motion.div 
           className='flex flex-col lg:flex-row items-center justify-center w-full'
           variants={fadeIn("up", 0.2)}

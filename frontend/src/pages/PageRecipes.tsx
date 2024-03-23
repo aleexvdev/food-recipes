@@ -142,7 +142,7 @@ export const PageRecipes = () => {
       </section>
       <section 
         ref={nextSectionRef}
-        className='h-auto w-full flex flex-col items-center justify-center mx-auto max-w-6xl pt-20 pb-0 transition-opacity'
+        className='h-auto w-full flex flex-col items-center justify-center mx-auto max-w-6xl py-20 transition-opacity'
       >
         <div className='w-full text-center max-w-md px-4 sm:max-w-lg md:max-w-4xl'>
           <motion.h1
