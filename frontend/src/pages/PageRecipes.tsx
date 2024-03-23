@@ -112,7 +112,7 @@ export const PageRecipes = () => {
         </AnimatePresence>
         <div className="absolute inset-0 flex items-center justify-center">
           <motion.div
-            className="text-center flex flex-col items-center justify-center max-w-md px-4 sm:max-w-lg md:max-w-xl lg:max-w-5xl"
+            className="text-center flex flex-col items-center justify-center max-w-md px-4 sm:max-w-lg md:max-w-xl lg:max-w-3xl"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: 'easeInOut' }}
