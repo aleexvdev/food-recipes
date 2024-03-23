@@ -14,7 +14,7 @@ export const Banner = ({ images }: IBanner) => {
     const interval = setInterval(() => {
       setDirection(1);
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 10000);
+    }, 15000);
 
     return () => clearInterval(interval);
   }, [images.length]);

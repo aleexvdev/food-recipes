@@ -20,7 +20,7 @@ function App() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % textBanner.length);
-    }, 10000);
+    }, 15000);
 
     return () => clearInterval(interval);
   }, [currentIndex, textBanner.length]);
