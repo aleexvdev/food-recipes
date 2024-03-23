@@ -10,7 +10,7 @@ export const SliderHero = ({ title, subtitle, text }: ISliderHero) => {
   return (
     <div className="flex flex-col items-center justify-center h-screen">
       <motion.span
-        className="text-white text-6xl font-bold tracking-wide sm:text-3xl md:text-2xl mb-4 banner-title slider-reveal opacity-0"
+        className="text-first text-2xl font-bold tracking-wide md:text-3xl mb-4 banner-title slider-reveal opacity-0"
         initial={{ y: 30, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.5, duration: 1, ease: 'easeInOut' }}

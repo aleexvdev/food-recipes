@@ -36,9 +36,9 @@ export const CardCategory = ({ props }: ICardCategory) => {
         }
       </div>
       <h1 className='font-bold text-xl'>{props.category}</h1>
-      <p className='text-center'>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+      <p className='text-center pb-3'>{props.description}</p>
       <Link to={'/recipes'}>
-        <button className='text-black font-bold text-md hover:text-first mt-3'>Explore Menu</button>
+        <button className='text-black font-bold text-md hover:text-first'>Explore Menu</button>
       </Link>
     </div>
   )
