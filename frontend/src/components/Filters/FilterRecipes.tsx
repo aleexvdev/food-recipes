@@ -11,7 +11,7 @@ interface IFilterRecipes {
 
 export const FilterRecipes = ({ getFilters }: IFilterRecipes) => {
 
-  const [showFilter, setShowFilter] = useState<boolean>(true);
+  const [showFilter, setShowFilter] = useState<boolean>(false);
   const [filters, setFilters] = useState<TypeFilters>({
     calories: {
       from: 0,
