@@ -28,7 +28,7 @@ export const fetchRecipes = async (formData: TypeValuesForm) => {
       filters.meals.map((meal) => mealsType+="mealType="+meal+"&")
     }
 
-    const response = await axios.get(`${API_URL}?type=public&q=${query}&random=false&${calories}${igr}${mealsType}${dietsType}app_key=${import.meta.env.VITE_APP_KEY}&app_id=${import.meta.env.VITE_APP_ID}&cuisineType=American&beta=false`);
+    const response = await axios.get(`${API_URL}?type=public&q=${query}&random=false&${calories}${igr}${mealsType}${dietsType}app_key=${import.meta.env.VITE_APP_KEY}&app_id=${import.meta.env.VITE_APP_ID}&beta=false`);
 		if (response.status === 200) {
 			const filterRecipe: TypeRecipe = {
 				count: response.data.count,

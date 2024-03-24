@@ -1,21 +1,37 @@
-import { TypeRecipe } from "../../types/TypeRecipes"
+import { TypeRecipe } from "../../types/TypeRecipes";
 import { CardRecipe } from "../common/Cards/CardRecipe";
+import { CardSkeleton } from "../common/Skeleton/CardSkeleton";
 
 interface IRecipeComponent {
   foodRecipes?: TypeRecipe;
+  isLoading?: boolean;
 }
 
-export const RecipeComponent = ({ foodRecipes }: IRecipeComponent) => {
+export const RecipeComponent = ({ foodRecipes, isLoading }: IRecipeComponent) => {
+
+  if (isLoading) {
+    return (
+      <div className="w-full h-full pb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 w-full">
+          {[...Array(10)].map((_, index) => (
+            <CardSkeleton key={index} />
+          ))}
+        </div>
+      </div>
+    );
+  }
 
   if (!foodRecipes) {
     return (
-      <div className="w-full text-center">Loading...</div>
+      <div className="w-full h-full pb-10">
+        loading..
+      </div>
     );
   }
 
   return (
     <div className="w-full h-full pb-10">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 w-full">
         {
           foodRecipes.recipe.map((recipe) => {
             return <CardRecipe key={recipe.label} recipe={recipe} />
