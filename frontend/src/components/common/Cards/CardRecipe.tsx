@@ -3,6 +3,7 @@ import { TypeRecipeDetails } from "../../../types/TypeRecipes";
 import { MdOutlineBookmarkAdd, MdOutlineWatchLater } from "react-icons/md";
 import { useEffect, useState } from "react";
 import { CardSkeleton } from "../Skeleton/CardSkeleton";
+import { Link } from "react-router-dom";
 interface ICardRecipe {
   recipe: TypeRecipeDetails;
 }
@@ -29,44 +30,47 @@ export const CardRecipe = ({ recipe }: ICardRecipe) => {
   }, [recipe.images.regular?.url]);
 
   return isImageLoaded ? (
-    <motion.div
-      className="w-full h-full bg-black/10 rounded-lg shadow-2xl pb-4 md:pb-2"
-      variants={cardVariants}
-      initial="hidden"
-      animate="visible"
-    >
-      <div className="flex flex-col items-center justify-center">
-        <motion.img
-          src={recipe.images.regular?.url}
-          alt={recipe.label}
-          className="w-full h-full rounded-lg object-cover"
-          variants={imgVariants}
-          initial="hidden"
-          animate="visible"
-        />
-        <div className="flex w-full px-4 md:px-2 py-2 pb-1 pt-4">
-          <h3 className="text-2xl font-semibold mb-1 md:text-base text-left">
-            {recipe.label.length > 18
-              ? recipe.label.slice(0, 18) + "..."
-              : recipe.label}
-          </h3>
-        </div>
-        <div className="w-full flex items-center justify-between px-4 md:px-2 py-2 h-10">
-          <div className="flex items-center justify-start gap-2">
-            <MdOutlineWatchLater className="w-6 h-6" />
-            <span className="text-gray-900 text-lg md:text-sm">
-              {recipe.totalTime === 0 ? '< 1 Minute' : recipe.totalTime + ' Minutes'}
-            </span>
+    <Link to={recipe.id}>
+      <motion.div
+        key={recipe.label}
+        className="w-full h-full bg-black/10 rounded-lg shadow-2xl pb-4 md:pb-2"
+        variants={cardVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        <div className="flex flex-col items-center justify-center">
+          <motion.img
+            src={recipe.images.regular?.url}
+            alt={recipe.label}
+            className="w-full h-full rounded-lg object-cover"
+            variants={imgVariants}
+            initial="hidden"
+            animate="visible"
+          />
+          <div className="flex w-full px-4 md:px-2 py-2 pb-1 pt-4">
+            <h3 className="text-2xl font-semibold mb-1 md:text-base text-left">
+              {recipe.label.length > 18
+                ? recipe.label.slice(0, 18) + "..."
+                : recipe.label}
+            </h3>
           </div>
-          <div className="flex items-center">
-            <button className="bg-transparent rounded-full p-2 hover:bg-black/10">
-              <MdOutlineBookmarkAdd className="w-6 h-6" />
-            </button>
+          <div className="w-full flex items-center justify-between px-4 md:px-2 py-2 h-10">
+            <div className="flex items-center justify-start gap-2">
+              <MdOutlineWatchLater className="w-6 h-6" />
+              <span className="text-gray-900 text-lg md:text-sm">
+                {recipe.totalTime === 0 ? '< 1 Minute' : recipe.totalTime + ' Minutes'}
+              </span>
+            </div>
+            <div className="flex items-center">
+              <button className="bg-transparent rounded-full p-2 hover:bg-black/10">
+                <MdOutlineBookmarkAdd className="w-6 h-6" />
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </Link>
   ) : (
-    <CardSkeleton />
+    <CardSkeleton key={recipe.label} />
   )
 }

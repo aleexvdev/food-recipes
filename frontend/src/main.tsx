@@ -10,6 +10,8 @@ import './assets/index.css'
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import { PageRecipesDetails } from './pages/PageRecipesDetails.tsx'
+import { PageBlogsDetails } from './pages/PageBlogsDetails.tsx'
 
 const routerConfig = [
   {
@@ -27,12 +29,16 @@ const routerConfig = [
         element: <PageRecipes />
       },
       {
+        path: 'recipes/:id',
+        element: <PageRecipesDetails />
+      },
+      {
         path: 'blog',
         element: <PageBlogs />
       },
       { 
         path: 'blog/:id',
-        element: <PageBlogs />
+        element: <PageBlogsDetails />
       }
     ]
   }

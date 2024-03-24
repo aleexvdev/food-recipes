@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { TypeRecipe, TypeValuesForm } from '../types/TypeRecipes';
-import { mapperRecipe } from '../lib/mappers/MapperRecipe';
+import { mapperRecipe, mapperRecipeDetails } from '../lib/mappers/MapperRecipe';
 
 const API_URL = 'https://api.edamam.com/api/recipes/v2';
 
@@ -35,7 +35,7 @@ export const fetchRecipes = async (formData: TypeValuesForm) => {
         from: response.data.from,
         to: response.data.to,
         next: response.data['_links'].next?.href,
-				recipe: response.data.hits.map((item: any) => mapperRecipe(item.recipe))
+				recipe: response.data.hits.map((item: any) => mapperRecipe(item))
 			}
 			return {
 				success: true,
@@ -56,7 +56,6 @@ export const fetchRecipes = async (formData: TypeValuesForm) => {
 }
 
 export const fetchRecipesNext = async (url: string) => {
-
 	try {
     const response = await axios.get(url);
 		if (response.status === 200) {
@@ -65,12 +64,34 @@ export const fetchRecipesNext = async (url: string) => {
         from: response.data.from,
         to: response.data.to,
         next: response.data['_links'].next?.href,
-				recipe: response.data.hits.map((item: any) => mapperRecipe(item.recipe))
+				recipe: response.data.hits.map((item: any) => mapperRecipe(item))
 			}
 			return {
 				success: true,
         message: response.statusText,
         recipe: filterRecipe
+      }
+		}
+		return {
+      success: false,
+      message: response.statusText
+    }
+  } catch (error) {
+		return {
+			success: false,
+      message: 'Error fetching recipes:', error
+		}
+  }
+}
+
+export const fetchRecipeId = async (id: string) => {
+  try {
+    const response = await axios.get(`${API_URL}/${id}?type=public&app_key=${import.meta.env.VITE_APP_KEY}&app_id=${import.meta.env.VITE_APP_ID}`);
+		if (response.status === 200) {
+			return {
+				success: true,
+        message: response.statusText,
+        recipe: mapperRecipeDetails(response.data.recipe)
       }
 		}
 		return {

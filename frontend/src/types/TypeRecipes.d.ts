@@ -8,8 +8,47 @@ export type TypeRecipe = {
 	recipe: TypeRecipeDetails[];
 }
 
+export type TypeRecipeId = {
+	recipe: TypeRecipeDetails;
+}
+
 export type TypeRecipeDetails = {
-	// id: string;
+	calories: number;
+	cuisineType: Array<string>;
+	dishType: Array<string>;
+	images: {
+		large?: { height: number; url: string; width: number };
+		regular?: { height: number; url: string; width: number };
+		small?: { height: number; url: string; width: number };
+	};
+	ingredientLines: string[];
+	label: string;
+	mealType: Array<string>;
+	shareAs: string;
+	source: string;
+	totalTime: number;
+	url: string;
+	yield: number;
+	fats: {
+    label: string;
+    unit: string;
+    total: number;
+	};
+	carbs: {
+    label: string;
+    unit: string;
+    total: number;
+	};
+	protein: {
+    label: string;
+    unit: string;
+    total: number;
+	};
+	tags: string[] | null;
+	id: string;
+}
+
+export type TypeRecipeDetailsId = {
 	calories: number;
 	cuisineType: Array<string>;
 	dishType: Array<string>;

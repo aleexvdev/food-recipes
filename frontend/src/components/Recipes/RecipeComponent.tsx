@@ -43,8 +43,8 @@ export const RecipeComponent = ({ foodRecipes }: IRecipeComponent) => {
     <div className="w-full h-full pb-10">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 w-full">
         {
-          foodRecipes.recipe.map((recipe) => {
-            return <CardRecipe key={recipe.label} recipe={recipe} />
+          foodRecipes.recipe.map((recipe, index) => {
+            return <CardRecipe key={index} recipe={recipe} />
           })
         }
       </div>
