@@ -134,7 +134,7 @@ export const PageRecipes = () => {
           </motion.h1>
         </div>
         <div className='text-center max-w-md px-4 sm:max-w-xl md:max-w-5xl lg:max-w-7xl pt-10'>
-          <RecipeComponent foodRecipes={foodRecipes.recipes} isLoading={foodRecipes.loading} />
+          <RecipeComponent foodRecipes={foodRecipes.recipes} />
           <div className='pt-10 w-full flex items-center justify-between px-1'>
             {
               !foodRecipes.loading && foodRecipes?.recipes?.next ? (

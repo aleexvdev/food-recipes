@@ -1,13 +1,23 @@
+import { useEffect, useState } from "react";
 import { TypeRecipe } from "../../types/TypeRecipes";
 import { CardRecipe } from "../common/Cards/CardRecipe";
 import { CardSkeleton } from "../common/Skeleton/CardSkeleton";
 
 interface IRecipeComponent {
   foodRecipes?: TypeRecipe;
-  isLoading?: boolean;
 }
 
-export const RecipeComponent = ({ foodRecipes, isLoading }: IRecipeComponent) => {
+export const RecipeComponent = ({ foodRecipes }: IRecipeComponent) => {
+
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setIsLoading(true);
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []);
 
   if (isLoading) {
     return (
