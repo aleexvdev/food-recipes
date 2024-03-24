@@ -16,7 +16,6 @@ const imagenes = [imagen1];
 export const PageRecipes = () => {
 
   const nextSectionRef = useRef<HTMLElement>(null);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const { foodRecipes, dispatchRecipes } = useFoodRecipeContext();
   const [formValues, setFormValues] = useState<TypeValuesForm>({
     query: 'ceviche',
@@ -30,14 +29,6 @@ export const PageRecipes = () => {
       meals: []
     }
   });
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCurrentImageIndex((currentImageIndex + 1) % imagenes.length);
-    }, 10000);
-
-    return () => clearInterval(intervalId);
-  }, [currentImageIndex, imagenes.length]);
 
   useEffect(() => {
     const fetchData = async () => {
