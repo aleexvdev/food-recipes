@@ -145,7 +145,7 @@ export const ModalRecipe = ({ handleClose, recipe }: IModalRecipe) => {
                                 className='w-36 h-16 flex items-center justify-center gap-3'
                               >
                                 <div className='w-6'>
-                                  <PiForkKnifeFill className='w-6 h-6'/>
+                                  
                                 </div>
                                 <div className='w-full flex flex-col items-center justify-center'>
                                   <span className='font-bold text-left w-full tracking-wide'>MEAL TYPE</span>
