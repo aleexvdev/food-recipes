@@ -1,16 +1,11 @@
-import { useRef } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Banner } from "../components/common/Banner/Banner"
 import imagen1 from "../../public/assets/slider-banner/banner-blog.jpg"
 import imagen2 from "../../public/assets/slider-banner/banner-blog-1.jpg"
-import { ScrollDown } from '../components/ScrollDown'
 
 const imagenes = [imagen1, imagen2];
 
 export const PageBlogs = () => {
-
-  const nextSectionRef = useRef<HTMLElement>(null);
-
   return (
     <main className="h-auto">
       <section className="relative h-screen">
@@ -42,7 +37,6 @@ export const PageBlogs = () => {
             </motion.div>
           </div>
         </AnimatePresence>
-        <ScrollDown targetRef={nextSectionRef} />
       </section>
     </main>
   )
