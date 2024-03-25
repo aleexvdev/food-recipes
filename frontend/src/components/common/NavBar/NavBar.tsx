@@ -46,16 +46,12 @@ const NavBar: React.FC = () => {
   };
 
   return (
-    <nav
-      className={`w-full z-50 fixed top-0 origin-top ${
-        isScrolled ? 'bg-white shadow-2xl' : 'bg-transparent'
-      }`}
-    >
+    <nav className={`w-full z-50 fixed top-0 origin-top bg-main ${isScrolled ? 'shadow-2xl' : ''}`}>
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="w-full flex items-center justify-between h-20">
           <div className="w-full flex items-center justify-between">
             <div className="flex-shrink-0">
-              <Logo active={isScrolled} />
+              <Logo />
             </div>
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-10">
@@ -65,7 +61,7 @@ const NavBar: React.FC = () => {
                     key={link}
                     className={({ isActive }) =>
                       `font-semibold text-xl hover:text-first ${
-                        isActive ? 'text-first active-nav' : isScrolled ? 'text-black' : 'text-white'
+                        isActive ? 'text-first active-nav' : 'text-black'
                       }`
                     }
                   >
@@ -82,7 +78,7 @@ const NavBar: React.FC = () => {
               aria-controls="mobile-menu"
               aria-expanded={isOpen}
             >
-              <FaBars className={`${isScrolled ? 'text-black' : 'text-white'} w-6 h-6`} />
+              <FaBars className={`text-black w-6 h-6`} />
             </button>
           </div>
         </div>
@@ -99,7 +95,7 @@ const NavBar: React.FC = () => {
           >
             <div className='w-full flex items-center justify-between h-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
               <div className="flex-shrink-0">
-                <Logo active={true} />
+                <Logo />
               </div>
               <button
                 className="bg-transparent inline-flex items-center justify-center"
