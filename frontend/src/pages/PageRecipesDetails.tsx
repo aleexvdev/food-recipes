@@ -23,6 +23,10 @@ export const PageRecipesDetails = () => {
   const [recipe, setRecipe] = useState<TypeRecipeState>();
 
   useEffect(() => {
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	}, []);
+
+  useEffect(() => {
     if (id) {
       const fetchRecipeIdData = async (pid: string) => {
         const response = await fetchRecipeId(pid);
