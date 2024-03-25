@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { TypeRecipeDetails } from '../../../types/TypeRecipes';
 import { IoCheckmarkOutline, IoCloseOutline, IoHeart } from 'react-icons/io5';
 import { roundedDecimal, truncateLabel } from '../../../utils/functions';
-import { PiForkKnifeFill, PiTimerFill } from 'react-icons/pi';
+import { PiTimerFill } from 'react-icons/pi';
 import { HiOutlineExternalLink } from 'react-icons/hi';
 import { LuPrinter, LuUser2 } from 'react-icons/lu';
 import { FaCaretDown, FaTag } from 'react-icons/fa';
