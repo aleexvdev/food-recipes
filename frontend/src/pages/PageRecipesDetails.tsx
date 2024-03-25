@@ -54,7 +54,7 @@ export const PageRecipesDetails = () => {
             <AnimatePresence>
               <div className='flex flex-col-reverse md:flex-row items-start justify-between gap-5 md:gap-0 w-full'>
                 <h1 className='text-3xl md:text-5xl banner-title font-bold'>{recipe?.recipe?.label}</h1>
-                <div className='w-full flex items-center justify-end gap-3'>
+                <div className='w-full md:w-auto flex items-center justify-end gap-3'>
                   <button className="flex items-center justify-center gap-1 rounded-lg bg-first hover:bg-first/90 text-white py-1 px-4">
                     <MdOutlineBookmarkAdd className="w-6 h-6" />
                     <span className='text-xl md:text-lg'>Save</span>

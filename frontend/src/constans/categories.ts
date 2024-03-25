@@ -26,7 +26,7 @@ export const categories: TypeCategories[] = [
     category: "Teatime",
     description: "Indulgent tea accompaniments"
   }
- ];
+];
 
 export const diets: TypeDiets[] = [
   {

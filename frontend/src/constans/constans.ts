@@ -16,12 +16,11 @@ export const banners: TypeBanner[] = [
 ];
 
 export const foods: string[] = [
-  "Ceviche",
-  "Lomo Saltado",
-  "Picarones",
-  "Arroz Chaufa",
-  "Tallarines Rojos",
-  "Tallarines Verdes"
+  "Breakfast",
+  "Lunch",
+  "Dinner",
+  "Snack",
+  "Teatime"
 ];
 
 export const textBanner: {title: string, subtitle: string, text: string}[] = [

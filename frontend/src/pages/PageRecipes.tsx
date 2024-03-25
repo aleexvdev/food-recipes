@@ -10,15 +10,17 @@ import { Footer } from '../components/common/Footer/Footer';
 import imagen1 from '../../public/assets/slider-banner/banner-recipe-1.jpg';
 import { ScrollDown } from '../components/ScrollDown';
 import { Banner } from '../components/common/Banner/Banner';
+import { getMealByTime } from '../utils/functions';
 
 const imagenes = [imagen1];
+// foods[Math.floor(Math.random() * foods.length)]
 
 export const PageRecipes = () => {
 
   const nextSectionRef = useRef<HTMLElement>(null);
   const { foodRecipes, dispatchRecipes } = useFoodRecipeContext();
   const [formValues, setFormValues] = useState<TypeValuesForm>({
-    query: 'ceviche',
+    query: getMealByTime(),
     filters: {
       calories: {
         from: 0,

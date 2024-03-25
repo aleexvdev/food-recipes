@@ -1,3 +1,5 @@
+import { foods } from "../constans/constans";
+
 export const roundedDecimal = (numero:number, decimales:number): number|string => {
   if (typeof numero !== 'number' || isNaN(numero)) {
     return 'Unknown';
@@ -23,4 +25,21 @@ export function getRecipeIdFromUrl(url: string) {
     return recipeId;
   }
   return null;
+}
+
+export function getMealByTime(): string {
+  const currentTime = new Date();
+  const currentHour = currentTime.getHours();
+
+  if (currentHour >= 6 && currentHour < 10) {
+    return foods[0]; // Breakfast
+  } else if (currentHour >= 10 && currentHour < 14) {
+    return foods[1]; // Lunch
+  } else if (currentHour >= 14 && currentHour < 18) {
+    return foods[2]; // Dinner
+  } else if (currentHour >= 18 && currentHour < 20) {
+    return foods[3]; // Snack
+  } else {
+    return foods[4]; // Teatime
+  }
 }
