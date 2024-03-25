@@ -4,6 +4,7 @@ import { MdOutlineBookmarkAdd, MdOutlineWatchLater } from "react-icons/md";
 import { useEffect, useState } from "react";
 import { CardSkeleton } from "../Skeleton/CardSkeleton";
 import { Link } from "react-router-dom";
+
 interface ICardRecipe {
   recipe: TypeRecipeDetails;
 }
