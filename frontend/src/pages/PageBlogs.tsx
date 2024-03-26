@@ -4,6 +4,7 @@ import imagen1 from "../../public/assets/slider-banner/banner-blog.jpg"
 import imagen2 from "../../public/assets/slider-banner/banner-blog-1.jpg"
 import { BlogComponent } from '../components/Blogs/BlogComponent';
 import { blogPosts } from '../constans/data';
+import { Footer } from '../components/common/Footer/Footer';
 
 const imagenes = [imagen1, imagen2];
 
@@ -60,6 +61,7 @@ export const PageBlogs = () => {
           </div>
         </div>
       </section>
+      <Footer />
     </main>
   )
 }
