@@ -30,9 +30,12 @@ export type TypeDishes = {
 }
 
 export type TypeBlogPosts = {
-  id: number;
+  id: string;
   title: string;
+  author: string;
   description: string;
   imageUrl: string;
+  url: string;
   date: string;
+  content?:string;
 }

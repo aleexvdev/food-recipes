@@ -2,6 +2,8 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { Banner } from "../components/common/Banner/Banner"
 import imagen1 from "../../public/assets/slider-banner/banner-blog.jpg"
 import imagen2 from "../../public/assets/slider-banner/banner-blog-1.jpg"
+import { BlogComponent } from '../components/Blogs/BlogComponent';
+import { blogPosts } from '../constans/data';
 
 const imagenes = [imagen1, imagen2];
 
@@ -11,23 +13,23 @@ export const PageBlogs = () => {
       <section className="relative h-screen">
         <Banner images={imagenes} />
         <AnimatePresence>
-          <div className="absolute inset-0 flex items-center justify-center">
+          <div className="absolute inset-0 flex items-center justify-center px-4">
             <motion.div
-              className="text-center flex flex-col items-center justify-center max-w-md px-4 sm:max-w-lg md:max-w-3xl bg-black/90 rounded-xl py-5"
+              className="text-center flex flex-col items-center justify-center max-w-md px-4 sm:max-w-lg md:max-w-3xl bg-black/90 rounded-xl py-8 md:py-5"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: 'easeInOut' }}
             >
               <motion.h1
-                className="text-first text-5xl font-bold leading-10 tracking-wide md:text-8xl mb-4 banner-title"
+                className="text-first text-6xl font-bold leading-10 tracking-wide md:text-8xl mb-4 banner-title"
                 initial={{ opacity: 0, y: -50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
               >
-                Blog & Articles
+                Foody Blog
               </motion.h1>
               <motion.div
-                className="text-white text-xl font-medium p-5 mt-5 rounded-xl md:text-2xl"
+                className="text-white text-2xl font-medium pt-5 rounded-xl md:text-3xl"
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: 'easeOut', delay: 0.4 }}
@@ -37,6 +39,26 @@ export const PageBlogs = () => {
             </motion.div>
           </div>
         </AnimatePresence>
+      </section>
+      <section className='h-auto w-full flex flex-col items-center justify-center mx-auto max-w-6xl py-20 transition-opacity'>
+        <div className='w-full text-center max-w-md px-4 sm:max-w-lg md:max-w-4xl'>
+          <motion.h1
+            className="text-black text-5xl font-bold leading-10 tracking-wide md:text-8xl mb-4 banner-title"
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
+          >
+            Recent Blog Posts
+          </motion.h1>
+        </div>
+        <div className='max-w-md px-4 sm:max-w-xl md:max-w-5xl lg:max-w-7xl pt-10 w-full'>
+          <div className="w-full h-full pb-10">
+            <div className="w-full h-full flex flex-col gap-5 lg:flex-row items-start justify-start">
+              <BlogComponent blogPosts={blogPosts} />
+              <div className='w-80 bg-slate-600'>banner</div>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
   )
