@@ -27,7 +27,7 @@ function reducer(state: any, action: any) {
 const NavBar: React.FC = () => {
 
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { isOpen, isScrolled } = state;
+  const { isOpen } = state;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,7 +46,7 @@ const NavBar: React.FC = () => {
   };
 
   return (
-    <nav className={`w-full z-50 fixed top-0 origin-top bg-main ${isScrolled ? 'shadow-2xl' : ''}`}>
+    <nav className={`w-full  origin-top bg-main shadow-2xl`}>
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="w-full flex items-center justify-between h-20">
           <div className="w-full flex items-center justify-between">
