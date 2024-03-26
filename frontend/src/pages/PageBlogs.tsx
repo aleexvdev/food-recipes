@@ -61,7 +61,7 @@ export const PageBlogs = () => {
                 <BannerBlog />
               </div>
             </div>
-            <div className='w-full h-full flex items-center justify-center'>
+            <div className='w-full h-full flex items-center justify-center mt-5'>
               <button className="bg-first text-white py-2 px-4 flex items-center justify-center gap-3 rounded-lg hover:bg-first/85 transition-colors">
                 <span className='font-medium'>Load more</span>
               </button>

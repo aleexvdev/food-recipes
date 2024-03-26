@@ -21,16 +21,18 @@ export const blogPosts: TypeBlogPosts[] = [
     imageUrl: "https://i.imgur.com/lomosaltadofw.jpg",
     date: "2022-01-10",
     content: "El lomo saltado es un plato típico de la cocina criolla peruana que combina influencias chinas y peruanas. Esta deliciosa preparación consiste en trozos de lomo de res salteados con cebolla, tomate y papas fritas..."
-  }
-  /* {
-    id: 1,
-    title: "Classic Spaghetti Bolognese",
-    description: "A hearty and flavorful meat sauce paired with al dente spaghetti.",
-    imageUrl: "https://example.com/spaghetti-bolognese.jpg",
-    date: "2023-03-01",
-    text: "Spaghetti Bolognese is a classic Italian dish that combines rich and savory ground beef with tomatoes, herbs, and al dente spaghetti. This recipe is a staple in many households for its comforting flavors and easy preparation.\n\nTo begin, you'll need to gather your ingredients: ground beef, onions, garlic, carrots, celery, canned tomatoes, red wine, beef broth, and a variety of herbs and spices. Start by sautéing the finely chopped vegetables until softened, then add the ground beef and cook until browned. Deglaze the pan with red wine, allowing the alcohol to evaporate, then add the remaining ingredients and simmer for at least an hour to allow the flavors to meld.\n\nWhile the sauce is simmering, bring a large pot of salted water to a boil and cook your spaghetti until al dente. Drain the spaghetti and toss it with the Bolognese sauce, making sure each strand is evenly coated. Garnish with freshly grated Parmesan cheese and chopped parsley for a burst of flavor and color.\n\nThis dish is perfect for a cozy family dinner or a casual gathering with friends. Pair it with a simple green salad and a glass of full-bodied red wine for a truly Italian experience. Buon appetito!"
   },
   {
+    id: '3',
+    title: "Classic Spaghetti Bolognese",
+    author: "PeruDelicious.com",
+    description: "A hearty and flavorful meat sauce paired with al dente spaghetti.",
+    url: "https://perudelicious.com/lomo-saltado-receta",
+    imageUrl: "https://example.com/spaghetti-bolognese.jpg",
+    date: "2023-03-01",
+    content: "Spaghetti Bolognese is a classic Italian dish that combines rich and savory ground beef with tomatoes, herbs, and al dente spaghetti. This recipe is a staple in many households for its comforting flavors and easy preparation.\n\nTo begin, you'll need to gather your ingredients: ground beef, onions, garlic, carrots, celery, canned tomatoes, red wine, beef broth, and a variety of herbs and spices. Start by sautéing the finely chopped vegetables until softened, then add the ground beef and cook until browned. Deglaze the pan with red wine, allowing the alcohol to evaporate, then add the remaining ingredients and simmer for at least an hour to allow the flavors to meld.\n\nWhile the sauce is simmering, bring a large pot of salted water to a boil and cook your spaghetti until al dente. Drain the spaghetti and toss it with the Bolognese sauce, making sure each strand is evenly coated. Garnish with freshly grated Parmesan cheese and chopped parsley for a burst of flavor and color.\n\nThis dish is perfect for a cozy family dinner or a casual gathering with friends. Pair it with a simple green salad and a glass of full-bodied red wine for a truly Italian experience. Buon appetito!"
+  },
+  /* {
     id: 2,
     title: "Creamy Mushroom Risotto",
     description: "A rich and satisfying Italian rice dish with a velvety mushroom sauce.",
