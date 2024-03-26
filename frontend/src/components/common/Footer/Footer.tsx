@@ -10,7 +10,7 @@ export const Footer = () => {
           <div className='w-full md:w-auto flex flex-col items-center'>
             <p className="text-white text-lg font-semibold mb-2">Recipes data provided by</p>
             <Link to={'https://www.edamam.com/'} className="w-full md:w-auto flex justify-center">
-              <img src={'/public/assets/logo.png'} title='Edaman' alt="https://www.edamam.com/" className="h-12" />
+              <img src={'/assets/logo.png'} title='Edaman' alt="https://www.edamam.com/" className="h-12" />
             </Link>
           </div>
           <div className="w-full md:w-auto flex flex-col items-center">
