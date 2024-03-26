@@ -5,6 +5,7 @@ import imagen2 from "../../public/assets/slider-banner/banner-blog-1.jpg"
 import { BlogComponent } from '../components/Blogs/BlogComponent';
 import { blogPosts } from '../constans/data';
 import { Footer } from '../components/common/Footer/Footer';
+import { BannerBlog } from '../components/common/Banner/BannerBlog';
 
 const imagenes = [imagen1, imagen2];
 
@@ -54,9 +55,16 @@ export const PageBlogs = () => {
         </div>
         <div className='max-w-md px-4 sm:max-w-xl md:max-w-5xl lg:max-w-7xl pt-10 w-full'>
           <div className="w-full h-full pb-10">
-            <div className="w-full h-full flex flex-col gap-5 lg:flex-row items-start justify-start">
+            <div className="w-full h-full flex flex-col gap-5 md:flex-row items-start justify-start">
               <BlogComponent blogPosts={blogPosts} />
-              <div className='w-80 bg-slate-600'>banner</div>
+              <div className='w-full md:w-80'>
+                <BannerBlog />
+              </div>
+            </div>
+            <div className='w-full h-full flex items-center justify-center'>
+              <button className="bg-first text-white py-2 px-4 flex items-center justify-center gap-3 rounded-lg hover:bg-first/85 transition-colors">
+                <span className='font-medium'>Load more</span>
+              </button>
             </div>
           </div>
         </div>

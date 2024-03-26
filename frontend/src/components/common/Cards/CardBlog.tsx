@@ -24,23 +24,23 @@ export const CardBlog = ({ blog }: ICardBlog) => {
 
   return (
     <motion.div 
-      className="w-full mb-10 md:h-64 md:max-h-64 rounded-xl shadow-2xl"
+      className="w-full mb-10 lg:h-64 lg:max-h-64 rounded-xl shadow-2xl"
       variants={cardVariants}
       initial="hidden"
       animate="visible"
     >
-      <div className="w-full h-full flex flex-col md:flex-row items-center">
-        <div className="w-full md:w-[30%] h-full">
+      <div className="w-full h-full flex flex-col lg:flex-row items-center">
+        <div className="w-full lg:w-[30%] h-full">
           <motion.img
             src={'https://c.ndtvimg.com/2021-06/pqpb282_pizza_625x300_13_June_21.jpg'}
             alt={blog.title}
-            className="w-full h-full rounded-t-lg md:rounded-l-lg object-cover"
+            className="w-full h-full rounded-t-lg lg:rounded-l-lg object-cover"
             variants={imgVariants}
             initial="hidden"
             animate="visible"
           />
         </div>
-        <div className="w-full md:w-[70%] h-full p-4">
+        <div className="w-full lg:w-[70%] h-full p-4">
           <div className="w-full h-full flex flex-col items-center justify-between bg-main">
             <div className="w-full h-full flex-col items-start justify-start">
               <Link to={blog.id}>

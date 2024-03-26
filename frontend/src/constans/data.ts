@@ -201,4 +201,27 @@ export const socialNetworks: TypeSocialNetworks[] = [
     url: 'https://github.com/aleexvdev',
     icon: 'Github-Icon'
   },
-]
+];
+
+export const bannerBlogs: {id:number; text:string;}[] = [
+  {
+    id: 1,
+    text: "A delight for your senses"
+  },
+  {
+    id: 2,
+    text: "Enjoy unforgettable flavors"
+  },
+  {
+    id: 3,
+    text: "Delicious from the first bite"
+  },
+  {
+    id: 4,
+    text: "Extraordinary culinary experiences"
+  },
+  {
+    id: 5,
+    text: "Prepare a treat fit for royalty"
+  }
+];
