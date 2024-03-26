@@ -82,7 +82,7 @@ export const CardBlog = ({ blog }: ICardBlog) => {
               <Link
                 to={blog.id}
               >
-                <button className="bg-first text-white py-2 px-4 flex items-center justify-center gap-3 rounded-lg hover:bg-first/85 transition-colors">
+                <button className="w-full h-full bg-first text-white py-2 px-4 flex items-center justify-center gap-3 rounded-lg hover:bg-first/85 transition-colors">
                   <span className="text-base">READ MORE</span>
                   <MdOutlineArrowRightAlt className="w-6 h-6" />
                 </button>
