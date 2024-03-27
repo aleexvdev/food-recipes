@@ -7,6 +7,8 @@ import { Footer } from "../components/common/Footer/Footer";
 import { blogPosts } from "../constans/data";
 import { CardBlogDetails } from "../components/common/Cards/CardBlogDetails";
 import { IoSend } from "react-icons/io5";
+import { RiShareForwardLine } from "react-icons/ri";
+import { formatDate } from "../utils/functions";
 
 type TypeBlogState = {
   success: boolean;
@@ -23,9 +25,9 @@ export const PageBlogsDetails = () => {
   const [isFocusedName, setIsFocusedName] = useState<boolean>(false);
   const [isFocusedComment, setIsFocusedComment] = useState<boolean>(false);
 
-  /* useEffect(() => {
+  useEffect(() => {
 		window.scrollTo({ top: 0, behavior: 'smooth' });
-	}, []); */
+	}, []);
 
   useEffect(() => {
     if (id) {
@@ -94,19 +96,27 @@ export const PageBlogsDetails = () => {
           className='absolute h-[400px] w-screen object-cover sm:h-[500px] z-1'
         />
         <div className="absolute w-full bottom-[-50px] left-1/2 transform -translate-x-1/2 transition-opacity mx-auto max-w-7xl px-2 md:px-5 lg:px-10">
-          <div className="bg-first rounded-xl pl-2 shadow-2xl">
+          <div className="bg-first rounded-xl pl-2 shadow-2xl relative">
             <div className="w-full px-10 py-8 bg-white rounded-xl">
               <span className="text-black text-3xl font-semibold title">F<span className="text-first">oo</span>dy Blogs</span>
               <h1 className="text-4xl md:text-5xl banner-title font-bold pt-3">
                 {blog?.blog?.title}
               </h1>
             </div>
+            <button className="absolute top-7 right-3 rounded-full bg-transparent p-2 hover:bg-gray-300/50">
+              <RiShareForwardLine className="w-6 h-6 text-first" />
+            </button>
           </div>
         </div>
       </section>
       <section className="h-auto min-h-screen w-full mx-auto max-w-6xl transition-opacity pt-24 mb-20">
+        
         <div className="flex flex-col lg:flex-row items-start justify-start gap-3 w-full h-full">
           <div className="w-full lg:w-[60%] h-full">
+            <div className="w-full flex flex-col md:flex-row items-start md:items-center justify-between px-5 md:px-8 lg:px-0">
+              <span className="text-[17px] text-gray-500">Author: Alor Alexander</span>
+              <span className="text-[17px] text-gray-500">{blog?.blog?.date && formatDate(blog?.blog?.date)}</span>
+            </div>
             <AnimatePresence>
               <div className="w-full h-auto min-h-56 px-5 md:px-8 lg:px-0">
                 {
@@ -125,11 +135,11 @@ export const PageBlogsDetails = () => {
                       <div className="w-full rounded-l-lg rounded-r-xl bg-first h-12 pl-1 relative shadow-xl">
                         <input
                           type="text"
-                          className="w-full h-12 rounded-lg bg-white outline-none relative px-5"
+                          className="w-full h-12 rounded-lg bg-white outline-none relative px-5 text-xl"
                           name="name"
                           id="name"
                           value={valueName}
-                          onChange={ (e) => setValueName(e.target.value)}
+                          onChange={ (e) => e.target.value.trim().length <= 16 && setValueName(e.target.value)}
                           onFocus={handleFocusName}
                           onBlur={handleBlurName}
                         />
@@ -163,9 +173,9 @@ export const PageBlogsDetails = () => {
                           id="comment"
                           cols={20}
                           rows={3}
-                          className="w-full min-h-32 resize-none rounded-lg px-5 py-4 placeholder-transparent outline-none transition-all focus:border-b-red"
+                          className="ext-xl w-full min-h-32 resize-none rounded-lg px-5 py-4 placeholder-transparent outline-none transition-all focus:border-b-red"
                           value={valueComment}
-                          onChange={(e) => setValueComment(e.target.value)}
+                          onChange={(e) => e.target.value.trim().length <= 150 && setValueComment(e.target.value)}
                           onFocus={handleFocusComment}
                           onBlur={handleBlurComment}
                         />

@@ -43,3 +43,21 @@ export function getMealByTime(): string {
     return foods[4]; // Teatime
   }
 }
+
+export function formatDate(dateString: string): string {
+  const daysOfWeek = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+  const months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+
+  const date = new Date(dateString);
+
+  if (isNaN(date.getTime())) {
+    throw new Error('Formato de fecha inválido');
+  }
+
+  const dayOfWeek = daysOfWeek[date.getDay()];
+  const day = date.getDate();
+  const month = months[date.getMonth()];
+  const year = date.getFullYear();
+
+  return `${dayOfWeek}, ${day} de ${month} ${year}`;
+}
