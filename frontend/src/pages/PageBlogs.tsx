@@ -6,10 +6,26 @@ import { BlogComponent } from '../components/Blogs/BlogComponent';
 import { blogPosts } from '../constans/data';
 import { Footer } from '../components/common/Footer/Footer';
 import { BannerBlog } from '../components/common/Banner/BannerBlog';
+import { useState } from 'react';
+import { TypeBlogPosts } from '../types/typeConstans';
 
 const imagenes = [imagen1, imagen2];
 
 export const PageBlogs = () => {
+
+  const [blogsItems, setBlogsItems] = useState<TypeBlogPosts[]>(blogPosts.slice(0, 3));
+  const [loadMore, setLoadMore] = useState<boolean>(false);
+
+  const handleLoadMore = () => {
+    setLoadMore(true);
+    setTimeout(() => {
+      setBlogsItems([...blogsItems, ...blogPosts.slice(blogsItems.length, blogsItems.length + 3)]);
+      setLoadMore(false);
+    }, 2000);
+  };
+
+  const canLoadMore = blogsItems.length < blogPosts.length;
+
   return (
     <main className="h-auto">
       <section className="relative h-screen">
@@ -31,7 +47,7 @@ export const PageBlogs = () => {
                 Foody Blog
               </motion.h1>
               <motion.div
-                className="text-white text-2xl font-medium pt-5 rounded-xl md:text-3xl"
+                className="text-white text-2xl font-medium py-5 rounded-xl md:text-3xl"
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: 'easeOut', delay: 0.4 }}
@@ -56,15 +72,22 @@ export const PageBlogs = () => {
         <div className='max-w-md px-4 sm:max-w-xl md:max-w-5xl lg:max-w-7xl pt-10 w-full'>
           <div className="w-full h-full pb-10">
             <div className="w-full h-full flex flex-col gap-5 md:flex-row items-start justify-start">
-              <BlogComponent blogPosts={blogPosts} />
+              <BlogComponent blogPosts={blogsItems} />
               <div className='w-full md:w-80'>
                 <BannerBlog />
               </div>
             </div>
             <div className='w-full h-full flex items-center justify-center mt-5'>
-              <button className="bg-first text-white py-2 px-4 flex items-center justify-center gap-3 rounded-lg hover:bg-first/85 transition-colors">
-                <span className='font-medium'>Load more</span>
-              </button>
+              {
+                canLoadMore && (
+                  <button 
+                    className="bg-first text-white py-2 px-4 flex items-center justify-center gap-3 rounded-lg hover:bg-first/85 transition-colors"
+                    onClick={handleLoadMore}
+                  >
+                    <span className='font-medium text-xl md:text-xl'>{loadMore ? 'Loading...' : 'See more'}</span>
+                  </button>
+                )
+              }
             </div>
           </div>
         </div>

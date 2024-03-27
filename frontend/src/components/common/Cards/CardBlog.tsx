@@ -87,7 +87,7 @@ export const CardBlog = ({ blog }: ICardBlog) => {
                   <MdOutlineArrowRightAlt className="w-6 h-6" />
                 </button>
               </Link>
-              <div className="w-1/2 h-full flex items-center justify-end">
+              <div className="w-20 h-full flex items-center justify-end">
                 <button className="rounded-full bg-transparent p-2 hover:bg-gray-300/50">
                   <RiShareForwardLine className="w-6 h-6 text-first" />
                 </button>
