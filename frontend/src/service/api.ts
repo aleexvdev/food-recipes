@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { TypeRecipe, TypeValuesForm } from '../types/TypeRecipes';
 import { mapperRecipe, mapperRecipeDetails } from '../lib/mappers/MapperRecipe';
+import { blogPosts } from '../constans/data';
+import { TypeBlogPosts } from '../types/typeConstans';
 
 const API_URL = 'https://api.edamam.com/api/recipes/v2';
 
@@ -105,3 +107,25 @@ export const fetchRecipeId = async (id: string) => {
 		}
   }
 }
+
+export const fetchBlogs = async (id: string): Promise<{ success: boolean; message: string; blogs?: TypeBlogPosts } | undefined> => {
+  try {
+    const foundBlog = blogPosts.find((blog) => blog.id === id);
+    if (foundBlog) {
+      return {
+        success: true,
+        message: foundBlog.title,
+        blogs: foundBlog
+      }
+    }
+    return {
+      success: false,
+      message: 'Blog not found'
+    }
+  } catch (error) {
+    return {
+			success: false,
+      message: 'Error fetching recipes:'+ error
+		}
+  }
+};

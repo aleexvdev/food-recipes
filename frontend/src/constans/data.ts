@@ -10,7 +10,9 @@ export const blogPosts: TypeBlogPosts[] = [
     url: "https://peruvianfoodblog.com/ceviche-receta-tradicional",
     imageUrl: "https://i.imgur.com/cevichefw.jpg",
     date: "2022-01-10",
-    content: "El ceviche es el plato bandera de la gastronomía peruana. Esta preparación a base de pescado fresco marinado en limón, cebolla y ajíes tiene sus orígenes en la antigua tradición culinaria de los pueblos costeros del Perú..."
+    content: [
+      "El ceviche es el plato bandera de la gastronomía peruana. Esta preparación a base de pescado fresco marinado en limón, cebolla y ajíes tiene sus orígenes en la antigua tradición culinaria de los pueblos costeros del Perú..."
+    ]
   },
   {
     id: '2',
@@ -20,7 +22,9 @@ export const blogPosts: TypeBlogPosts[] = [
     url: "https://perudelicious.com/lomo-saltado-receta",
     imageUrl: "https://i.imgur.com/lomosaltadofw.jpg",
     date: "2022-01-10",
-    content: "El lomo saltado es un plato típico de la cocina criolla peruana que combina influencias chinas y peruanas. Esta deliciosa preparación consiste en trozos de lomo de res salteados con cebolla, tomate y papas fritas..."
+    content: [
+      "El lomo saltado es un plato típico de la cocina criolla peruana que combina influencias chinas y peruanas. Esta deliciosa preparación consiste en trozos de lomo de res salteados con cebolla, tomate y papas fritas..."
+    ]
   },
   {
     id: '3',
@@ -30,17 +34,26 @@ export const blogPosts: TypeBlogPosts[] = [
     url: "https://perudelicious.com/lomo-saltado-receta",
     imageUrl: "https://example.com/spaghetti-bolognese.jpg",
     date: "2023-03-01",
-    content: "Spaghetti Bolognese is a classic Italian dish that combines rich and savory ground beef with tomatoes, herbs, and al dente spaghetti. This recipe is a staple in many households for its comforting flavors and easy preparation.\n\nTo begin, you'll need to gather your ingredients: ground beef, onions, garlic, carrots, celery, canned tomatoes, red wine, beef broth, and a variety of herbs and spices. Start by sautéing the finely chopped vegetables until softened, then add the ground beef and cook until browned. Deglaze the pan with red wine, allowing the alcohol to evaporate, then add the remaining ingredients and simmer for at least an hour to allow the flavors to meld.\n\nWhile the sauce is simmering, bring a large pot of salted water to a boil and cook your spaghetti until al dente. Drain the spaghetti and toss it with the Bolognese sauce, making sure each strand is evenly coated. Garnish with freshly grated Parmesan cheese and chopped parsley for a burst of flavor and color.\n\nThis dish is perfect for a cozy family dinner or a casual gathering with friends. Pair it with a simple green salad and a glass of full-bodied red wine for a truly Italian experience. Buon appetito!"
-  },
-  /* {
-    id: 2,
-    title: "Creamy Mushroom Risotto",
-    description: "A rich and satisfying Italian rice dish with a velvety mushroom sauce.",
-    imageUrl: "https://example.com/mushroom-risotto.jpg",
-    date: "2023-02-15",
-    text: "Risotto is a beloved Italian dish that showcases the versatility of Arborio rice and its ability to absorb flavors. This creamy mushroom risotto is a delightful variation that is sure to please even the most discerning palates.\n\nTo begin, you'll need to gather your ingredients: Arborio rice, mushrooms (such as cremini, portobello, or a mix), onions, garlic, vegetable or chicken broth, white wine, butter, Parmesan cheese, and fresh herbs like thyme and parsley. Start by sautéing the finely chopped onions and mushrooms until they release their fragrance and the mushrooms are browned.\n\nNext, add the Arborio rice and toast it briefly in the pan to coat it with the flavors. Deglaze the pan with a splash of white wine, allowing the alcohol to evaporate. From here, it's a slow and steady process of adding hot broth to the rice, stirring frequently, and allowing the rice to gradually absorb the liquid and release its starches, creating a creamy and velvety texture.\n\nAs the risotto nears completion, stir in the butter and grated Parmesan cheese to further enrich the dish. Finish with fresh herbs, a squeeze of lemon juice, and a drizzle of truffle oil (optional) for an added layer of earthy flavor.\n\nServe this risotto as a main course or as a luxurious side dish. Pair it with a crisp white wine and a simple green salad for a delightful Italian-inspired meal. Enjoy the comforting and indulgent flavors of this creamy mushroom risotto!"
+    content: [
+      "Spaghetti Bolognese is a classic Italian dish that combines rich and savory ground beef with tomatoes, herbs, and al dente spaghetti. This recipe is a staple in many households for its comforting flavors and easy preparation.\n\nTo begin, you'll need to gather your ingredients: ground beef, onions, garlic, carrots, celery, canned tomatoes, red wine, beef broth, and a variety of herbs and spices. Start by sautéing the finely chopped vegetables until softened, then add the ground beef and cook until browned. Deglaze the pan with red wine, allowing the alcohol to evaporate, then add the remaining ingredients and simmer for at least an hour to allow the flavors to meld.\n\nWhile the sauce is simmering, bring a large pot of salted water to a boil and cook your spaghetti until al dente. Drain the spaghetti and toss it with the Bolognese sauce, making sure each strand is evenly coated. Garnish with freshly grated Parmesan cheese and chopped parsley for a burst of flavor and color.\n\nThis dish is perfect for a cozy family dinner or a casual gathering with friends. Pair it with a simple green salad and a glass of full-bodied red wine for a truly Italian experience. Buon appetito!"
+    ]
   },
   {
+    id: '4',
+    title: "Deleite de los Andes: Las Exquisitas Recetas de la Cocina Peruana",
+    author: "PeruDelicious.com",
+    description: "Explore la rica diversidad de la gastronomía peruana, una fusión vibrante de tradiciones ancestrales y sabores únicos que deleitan el paladar. Desde platos emblemáticos hasta deliciosos bocados callejeros, sumérjase en una experiencia culinaria inolvidable.",
+    url: "https://perudelicious.com/lomo-saltado-receta",
+    imageUrl: "https://images.pexels.com/photos/1419946/pexels-photo-1419946.jpeg",
+    date: "2023-02-15",
+    content: [
+      "La cocina peruana es un verdadero tesoro culinario, una amalgama de influencias que se remontan a las culturas precolombinas, la conquista española y las migraciones posteriores. Cada región del Perú aporta sus propias tradiciones y técnicas, creando una diversidad gastronómica sin igual. Desde los platos de la costa, con sus frescos mariscos y ceviches vibrantes, hasta los guisos sustanciosos de la sierra, cada bocado es una celebración de sabores únicos.",
+      "Uno de los platos emblemáticos de la gastronomía peruana es el ceviche, un delicioso marinade de pescado fresco en una mezcla de jugos cítricos, ají y especias. Pero eso es solo la punta del iceberg culinario peruano. La pachamanca, un método ancestral de cocción subterránea, da vida a suculentos platos de carne y verduras cocinadas lentamente en una tierra caliente. El lomo saltado, un platillo fusión de influencia china, combina tiernas tiras de carne salteadas con cebollas, tomates y papas fritas crujientes.",
+      "Además de los platos principales, Perú también ofrece una variedad de bocaditos callejeros irresistibles. Las picarones, una especie de buñuelos de camote bañados en almíbar de chancaca, son un dulce tentador. Los anticuchos, brochetas de corazón de res marinadas en especias picantes, son una delicia para los amantes de la carne. Y no podemos olvidar el clásico sanguche de chicharrón, un sándwich crujiente relleno de carne de cerdo frita y camotitos. Cada bocado es una explosión de sabores que transporta al comensal a las calles bulliciosas de Lima y otros rincones del país.",
+      "Con su rica herencia culinaria y la pasión por los ingredientes frescos y las técnicas ancestrales, la gastronomía peruana es un verdadero deleite para los sentidos. Cada plato cuenta una historia de tradición, diversidad y amor por la buena mesa."
+    ]
+  },
+  /* {
     id: 3,
     title: "Crispy Oven-Baked Chicken Wings",
     description: "Perfectly crispy and flavorful chicken wings without the mess of deep-frying.",

@@ -97,5 +97,5 @@ export const CardBlog = ({ blog }: ICardBlog) => {
         </div>
       </div>
     </motion.div>
-  )
+  );
 }

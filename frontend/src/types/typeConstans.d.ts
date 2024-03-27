@@ -37,5 +37,5 @@ export type TypeBlogPosts = {
   imageUrl: string;
   url: string;
   date: string;
-  content?:string;
+  content?:string[];
 }
