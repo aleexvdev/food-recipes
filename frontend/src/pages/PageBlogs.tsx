@@ -36,7 +36,7 @@ export const PageBlogs = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: 'easeOut', delay: 0.4 }}
               >
-                <p>Discover a world of flavors, explore a vast collection of recipes, and delight your palate with exquisite dishes.</p>
+                <p>Blogs with the best recipes to delight your palate. Exquisite recipes in inspiring articles.</p>
               </motion.div>
             </motion.div>
           </div>

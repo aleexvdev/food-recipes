@@ -21,7 +21,7 @@ export const CardBlogDetails = ({ blog }: ICardBlog) => {
 
   return (
     <motion.div 
-      className="w-full h-[130px] max-h-[130px] rounded-xl shadow-2xl bg-main"
+      className="w-full h-[130px] md:h-[150px] max-h-[130px] md:max-h-[150px] lg:h-[150px] lg:max-h-[130px] rounded-xl shadow-2xl bg-main"
       variants={cardVariants}
       initial="hidden"
       animate="visible"
@@ -30,15 +30,15 @@ export const CardBlogDetails = ({ blog }: ICardBlog) => {
         <motion.img
           src={'https://c.ndtvimg.com/2021-06/pqpb282_pizza_625x300_13_June_21.jpg'}
           alt={blog.title}
-          className="w-[150px] h-[130px] rounded-l-xl object-cover"
+          className="w-[150px] md:w-1/2 h-[130px] md:h-[150px] lg:w-[150px] lg:h-[130px] rounded-l-xl object-cover"
           variants={imgVariants}
           initial="hidden"
           animate="visible"
         />
-        <div className="w-full h-full px-2 py-4 flex flex-col items-center justify-between">
+        <div className="w-full h-full px-2 md:px-4 py-4 flex flex-col items-start justify-between">
           <Link to={blog.id}>
             <motion.h3 
-              className="font-semibold text-base text-black hover:text-first"
+              className="font-semibold text-lg md:text-3xl lg:text-xl text-black hover:text-first"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, ease: 'easeInOut' }}

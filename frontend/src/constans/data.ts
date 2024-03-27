@@ -42,7 +42,7 @@ export const blogPosts: TypeBlogPosts[] = [
     id: '4',
     title: "Deleite de los Andes: Las Exquisitas Recetas de la Cocina Peruana",
     author: "PeruDelicious.com",
-    description: "Explore la rica diversidad de la gastronomía peruana, una fusión vibrante de tradiciones ancestrales y sabores únicos que deleitan el paladar. Desde platos emblemáticos hasta deliciosos bocados callejeros, sumérjase en una experiencia culinaria inolvidable.",
+    description: "Explore la rica diversidad de la gastronomía peruana, una fusión vibrante de tradiciones ancestrales y sabores únicos que deleitan el paladar.",
     url: "https://perudelicious.com/lomo-saltado-receta",
     imageUrl: "https://images.pexels.com/photos/1419946/pexels-photo-1419946.jpeg",
     date: "2023-02-15",
