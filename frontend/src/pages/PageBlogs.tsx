@@ -1,13 +1,13 @@
+import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { Banner } from "../components/common/Banner/Banner"
-import imagen1 from "../../public/assets/slider-banner/banner-blog.jpg"
-import imagen2 from "../../public/assets/slider-banner/banner-blog-1.jpg"
 import { BlogComponent } from '../components/Blogs/BlogComponent';
 import { blogPosts } from '../constans/data';
 import { Footer } from '../components/common/Footer/Footer';
-import { BannerBlog } from '../components/common/Banner/BannerBlog';
-import { useState } from 'react';
 import { TypeBlogPosts } from '../types/typeConstans';
+import { BannerBlog } from '../components/common/Banner/BannerBlog';
+import { Banner } from "../components/common/Banner/Banner"
+import imagen1 from "../../public/assets/slider-banner/banner-blog.jpg"
+import imagen2 from "../../public/assets/slider-banner/banner-blog-1.jpg"
 
 const imagenes = [imagen1, imagen2];
 
@@ -15,6 +15,10 @@ export const PageBlogs = () => {
 
   const [blogsItems, setBlogsItems] = useState<TypeBlogPosts[]>(blogPosts.slice(0, 3));
   const [loadMore, setLoadMore] = useState<boolean>(false);
+
+  useEffect(() => {
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	}, []);
 
   const handleLoadMore = () => {
     setLoadMore(true);

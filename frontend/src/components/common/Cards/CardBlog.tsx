@@ -80,7 +80,7 @@ export const CardBlog = ({ blog }: ICardBlog) => {
               transition={{ duration: 0.8, ease: 'easeInOut' }}
             >
               <Link
-                to={blog.id}
+                to={`/blog/${blog.id}`}
               >
                 <button className="w-full h-full bg-first text-white py-2 px-4 flex items-center justify-center gap-3 rounded-lg hover:bg-first/85 transition-colors">
                   <span className="text-base">READ MORE</span>

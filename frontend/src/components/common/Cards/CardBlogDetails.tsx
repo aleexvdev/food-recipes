@@ -36,7 +36,7 @@ export const CardBlogDetails = ({ blog }: ICardBlog) => {
           animate="visible"
         />
         <div className="w-full h-full px-2 md:px-4 py-4 flex flex-col items-start justify-between">
-          <Link to={blog.id}>
+          <Link to={`/blog/${blog.id}`}>
             <motion.h3 
               className="font-semibold text-lg md:text-3xl lg:text-xl text-black hover:text-first"
               initial={{ opacity: 0, y: 10 }}
