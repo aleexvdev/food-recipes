@@ -60,7 +60,7 @@ const NavBar: React.FC = () => {
                     to={path}
                     key={link}
                     className={({ isActive }) =>
-                      `font-semibold text-xl hover:text-first ${
+                      `font-semibold text-xl md:text-2xl hover:text-first ${
                         isActive ? 'text-first active-nav' : 'text-black'
                       }`
                     }
