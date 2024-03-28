@@ -49,7 +49,7 @@ export const CardRecipe = ({ recipe }: ICardRecipe) => {
         />
         <div className="flex w-full px-4 md:px-2 py-2 pb-1 pt-4">
           <Link to={recipe.id}>
-            <h3 className="text-2xl font-semibold mb-1 md:text-base text-left text-black hover:text-black/85">
+            <h3 className="text-2xl font-semibold mb-1 md:text-base text-left text-black hover:text-first">
               {recipe.label.length > 18
                 ? recipe.label.slice(0, 18) + "..."
                 : recipe.label}

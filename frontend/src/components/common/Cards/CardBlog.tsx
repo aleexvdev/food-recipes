@@ -2,7 +2,9 @@ import { motion } from "framer-motion"
 import { TypeBlogPosts } from '../../../types/typeConstans'
 import { Link } from "react-router-dom";
 import { MdOutlineArrowRightAlt } from "react-icons/md";
-import { RiShareForwardLine } from "react-icons/ri";
+import { useState } from "react";
+import { CardShareBlog } from "./CardShareBlog";
+import { IoMdShare } from "react-icons/io";
 
 interface ICardBlog {
   blog: TypeBlogPosts;
@@ -20,7 +22,11 @@ const imgVariants = {
 
 export const CardBlog = ({ blog }: ICardBlog) => {
 
-  // const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const [activeShare, setActiveShare] = useState<boolean>(false);
+
+  const handleActiveShare = () => {
+    setActiveShare(!activeShare);
+  }
 
   return (
     <motion.div 
@@ -45,7 +51,7 @@ export const CardBlog = ({ blog }: ICardBlog) => {
             <div className="w-full h-full flex-col items-start justify-start">
               <Link to={blog.id}>
                 <motion.h3 
-                  className="font-semibold text-2xl text-black hover:text-black/85"
+                  className="font-semibold text-2xl text-black hover:text-first"
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, ease: 'easeInOut' }}
@@ -87,10 +93,20 @@ export const CardBlog = ({ blog }: ICardBlog) => {
                   <MdOutlineArrowRightAlt className="w-6 h-6" />
                 </button>
               </Link>
-              <div className="w-20 h-full flex items-center justify-end">
-                <button className="rounded-full bg-transparent p-2 hover:bg-gray-300/50">
-                  <RiShareForwardLine className="w-6 h-6 text-first" />
+              <div className="w-20 h-full flex items-center justify-end relative">
+                <button 
+                  className={`rounded-full p-2 hover:bg-first/30 ${activeShare ? 'bg-first/30' : 'bg-transparent'}`}
+                  onClick={handleActiveShare}
+                >
+                  <IoMdShare className="w-6 h-6 text-first" />
                 </button>
+                {
+                  activeShare && (
+                    <div className="absolute right-14">
+                      <CardShareBlog key={blog.id} />
+                    </div>
+                  )
+                }
               </div>
             </motion.div>
           </div>

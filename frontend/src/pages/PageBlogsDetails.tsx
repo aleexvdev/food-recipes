@@ -9,6 +9,8 @@ import { CardBlogDetails } from "../components/common/Cards/CardBlogDetails";
 import { IoSend } from "react-icons/io5";
 import { RiShareForwardLine } from "react-icons/ri";
 import { formatDate } from "../utils/functions";
+import { IoMdShare } from "react-icons/io";
+import { CardShareBlog } from "../components/common/Cards/CardShareBlog";
 
 type TypeBlogState = {
   success: boolean;
@@ -24,6 +26,7 @@ export const PageBlogsDetails = () => {
   const [valueComment, setValueComment] = useState('');
   const [isFocusedName, setIsFocusedName] = useState<boolean>(false);
   const [isFocusedComment, setIsFocusedComment] = useState<boolean>(false);
+  const [activeShare, setActiveShare] = useState<boolean>(false);
 
   useEffect(() => {
 		window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -66,6 +69,11 @@ export const PageBlogsDetails = () => {
     }
   };
 
+  const handleActiveShare = () => {
+    setActiveShare(!activeShare);
+  }
+
+
   const labelAnimationName = {
     initial: { top: '50%', left: '1.4rem', transform: 'translateY(-50%)', opacity: 1 },
     animate: { top: '-0.6rem', left: '1.1rem', transform: 'translateY(0)', opacity: 1 },
@@ -103,9 +111,21 @@ export const PageBlogsDetails = () => {
                 {blog?.blog?.title}
               </h1>
             </div>
-            <button className="absolute top-7 right-3 rounded-full bg-transparent p-2 hover:bg-gray-300/50">
-              <RiShareForwardLine className="w-6 h-6 text-first" />
-            </button>
+            <div className="absolute top-6 right-3">
+              <button 
+                className={`rounded-full p-2 hover:bg-first/30 ${activeShare ? 'bg-first/30' : 'bg-transparent'} relative w-10`}
+                onClick={handleActiveShare}
+              >
+                <IoMdShare className="w-6 h-6 text-first" />
+              </button>
+              {
+                activeShare && (
+                  <div className="absolute -bottom-2 -left-52">
+                    <CardShareBlog />
+                  </div>
+                )
+              }
+            </div>            
           </div>
         </div>
       </section>
