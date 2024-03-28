@@ -10,7 +10,7 @@ interface IModalFilter {
   handleFilterCalories: (evt: React.ChangeEvent<HTMLInputElement>) => void;
   handleFilterCheckbox: (evt: React.ChangeEvent<HTMLInputElement>) => void;
   handleReset: () => void;
-  handleAply: () => void;
+  handleAply: (filters: TypeFilters) => void;
 }
 
 export const ModalFilter = ({ handleClose, filters, handleFilterCalories, handleFilterCheckbox, handleAply, handleReset }: IModalFilter) => {
@@ -150,7 +150,7 @@ export const ModalFilter = ({ handleClose, filters, handleFilterCalories, handle
             </button>
             <button 
               className='w-32 h-10 bg-first hover:bg-first/85 text-white rounded-lg py-2 flex items-center justify-center gap-3'
-              onClick={handleAply}
+              onClick={() => handleAply(filters)}
               type='submit'
             >
               <span className='text-white text-lg'>Apply</span>

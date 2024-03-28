@@ -7,7 +7,6 @@ import { Footer } from "../components/common/Footer/Footer";
 import { blogPosts } from "../constans/data";
 import { CardBlogDetails } from "../components/common/Cards/CardBlogDetails";
 import { IoSend } from "react-icons/io5";
-import { RiShareForwardLine } from "react-icons/ri";
 import { formatDate } from "../utils/functions";
 import { IoMdShare } from "react-icons/io";
 import { CardShareBlog } from "../components/common/Cards/CardShareBlog";

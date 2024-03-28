@@ -42,7 +42,7 @@ export const CardRecipe = ({ recipe }: ICardRecipe) => {
         <motion.img
           src={recipe.images.regular?.url}
           alt={recipe.label}
-          className="w-full h-full rounded-lg object-cover"
+          className="w-full h-full rounded-t-lg object-cover"
           variants={imgVariants}
           initial="hidden"
           animate="visible"

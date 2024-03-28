@@ -87,9 +87,18 @@ export const FilterRecipes = ({ getFilters }: IFilterRecipes) => {
     }
   };
 
-  const handleAply = () => {
+  const handleAply = (filters: TypeFilters) => {
     getFilters(filters);
     setModalShowFilter(false);
+    setFilters({
+      calories: {
+        from: 0,
+        to: 0,
+      },
+      ingredients: 0,
+      diets: [],
+      meals: []
+    });
   }
 
   const handleReset = () => {
